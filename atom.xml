@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://github.com/sethome2/sethome2.github.io</id>
+    <id>https://sethome2.github.io</id>
     <title>Gridea</title>
-    <updated>2021-07-20T15:12:05.707Z</updated>
+    <updated>2021-07-20T15:30:14.592Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://github.com/sethome2/sethome2.github.io"/>
-    <link rel="self" href="https://github.com/sethome2/sethome2.github.io/atom.xml"/>
+    <link rel="alternate" href="https://sethome2.github.io"/>
+    <link rel="self" href="https://sethome2.github.io/atom.xml"/>
     <subtitle>sethome的橱窗</subtitle>
-    <logo>https://github.com/sethome2/sethome2.github.io/images/avatar.png</logo>
-    <icon>https://github.com/sethome2/sethome2.github.io/favicon.ico</icon>
+    <logo>https://sethome2.github.io/images/avatar.png</logo>
+    <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[用Gridea编写博客？？]]></title>
-        <id>https://github.com/sethome2/sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/</id>
-        <link href="https://github.com/sethome2/sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/">
+        <id>https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/</id>
+        <link href="https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/">
         </link>
         <updated>2021-06-22T15:24:28.000Z</updated>
         <content type="html"><![CDATA[<p>其实也没啥，打算用这玩意宣传一些玩意来自娱自乐吧!</p>
