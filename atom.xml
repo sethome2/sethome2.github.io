@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2021-07-20T15:51:54.577Z</updated>
+    <updated>2021-07-20T17:23:23.306Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, sethome的橱窗</rights>
+    <entry>
+        <title type="html"><![CDATA[关于]]></title>
+        <id>https://sethome2.github.io/post/about/</id>
+        <link href="https://sethome2.github.io/post/about/">
+        </link>
+        <updated>2021-07-20T15:52:16.000Z</updated>
+        <content type="html"><![CDATA[<p>这里是sethome的橱窗，会展示自己的某些作品，欢迎关注！</p>
+<p>我，是不知道干啥的废物一枚，致力于多种学科的学习（bushi)，虽然并没有什么卵用，但是还是很开心。<br>
+目前专精于计算机，没啥用的其他技能：画图，抄板balabala</p>
+<p>This is sethome's show window, which will display some of my own works,welcome flollow me or this website!</p>
+<p>Actully,I don't know what I should do. But I try to understand the interesting parts of each subject, although it is not helpful to my life and study,I still very HAPPY!<br>
+Currently specializing in computers, and I had some skill which is no helpful, Including CAD,draw electric circuit broad etc.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用Gridea编写博客？？]]></title>
         <id>https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/</id>
