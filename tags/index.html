@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
+
+<head>
+  <meta charset="utf-8" >
 
 <title>标签列表 | sethome的橱窗</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1626874022564">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1626874356381">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -28,15 +29,25 @@
 
 
     <meta name="description" content="sethome的橱窗">
-  </head>
-  <body>
-    <div id="app" class="main">
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?962ffd213ed43ff588cf9a794c723d58";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+</head>
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+<body>
+  <div id="app" class="main">
+
+    <div class="sidebar" :class="{ 'full-height': menuVisible }">
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1626874022564" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1626874356381" class="site-logo">
         <h1 class="site-title">sethome的橱窗</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -107,9 +118,9 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script type="application/javascript">
 
 AOS.init();
@@ -133,5 +144,6 @@ var app = new Vue({
 
 
 
-  </body>
+</body>
+
 </html>
