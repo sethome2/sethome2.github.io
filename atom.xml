@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2021-07-21T14:11:11.373Z</updated>
+    <updated>2021-07-22T07:45:34.697Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, sethome的橱窗</rights>
+    <entry>
+        <title type="html"><![CDATA[RGB展示柜！！]]></title>
+        <id>https://sethome2.github.io/post/rgb-zhan-shi-ju/</id>
+        <link href="https://sethome2.github.io/post/rgb-zhan-shi-ju/">
+        </link>
+        <updated>2021-07-22T07:44:35.000Z</updated>
+        <content type="html"><![CDATA[<p>其实这是我高考完暑假做的东西。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[贴点老图]]></title>
+        <id>https://sethome2.github.io/post/tie-dian-lao-tu/</id>
+        <link href="https://sethome2.github.io/post/tie-dian-lao-tu/">
+        </link>
+        <updated>2021-07-20T17:49:55.000Z</updated>
+        <content type="html"><![CDATA[<p>啊吧</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用Gridea编写博客？？]]></title>
         <id>https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/</id>
