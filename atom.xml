@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2021-08-01T05:49:53.998Z</updated>
+    <updated>2021-08-09T10:03:40.345Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -10,6 +10,40 @@
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, sethome的橱窗</rights>
+    <entry>
+        <title type="html"><![CDATA[Robomaster Adam战队宣传图片]]></title>
+        <id>https://sethome2.github.io/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/</id>
+        <link href="https://sethome2.github.io/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/">
+        </link>
+        <updated>2021-08-09T09:22:05.000Z</updated>
+        <content type="html"><![CDATA[<p>目前现在在齐鲁工业大学 Adam实验室这边做robomaster，然后这边决赛打完，就放一些自己拍的图片吧~<br>
+我还是比较喜欢拍摄静物的哈哈哈</p>
+<p>对了，我在这边主要是做电控，未来可能会学习一些机器学习的东西。</p>
+<p>转载请标明出处</p>
+<hr>
+<p>请欣赏：</p>
+<ol>
+<li>
+<p>先放一张我觉得最帅的<br>
+<img src="https://sethome2.github.io/post-images/1628501400933.jpg" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>接下来是电控系统的一些特写<br>
+<img src="https://sethome2.github.io/post-images/1628501476409.jpg" alt="" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1628501484815.jpg" alt="" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1628503167706.jpg" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>比赛赛场的<br>
+<img src="https://sethome2.github.io/post-images/1628503233679.jpg" alt="" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1628503244943.jpg" alt="" loading="lazy"></p>
+</li>
+</ol>
+<hr>
+<p>自感觉拍的还行，最近更图片有点多，打算写一下技术类的（其实是一篇技术的也没写）<br>
+对了，打算中英混合更新，练练英语。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RGB展示柜！！]]></title>
         <id>https://sethome2.github.io/post/rgb-zhan-shi-ju/</id>
