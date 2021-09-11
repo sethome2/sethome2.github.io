@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2021-08-30T16:00:41.940Z</updated>
+    <updated>2021-09-11T05:10:24.682Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, sethome的橱窗</rights>
+    <entry>
+        <title type="html"><![CDATA[北京之行——天安门升旗]]></title>
+        <id>https://sethome2.github.io/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/</id>
+        <link href="https://sethome2.github.io/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/">
+        </link>
+        <updated>2021-09-11T04:48:12.000Z</updated>
+        <content type="html"><![CDATA[<p>不知道写点啥，干啥都菜。只能随便乱写。其实这个是本年5月份去了，图片都放在桌面上<strong>好久了</strong>，就写写吧。<br>
+找机会一定写写技术相关，现在MarkDown还用不利索哈哈哈，对着文档在用。</p>
+<hr>
+<p>“天安门广场是我国……是向外国朋友展示我国风貌……疫情防控期间，请佩戴口罩……“<br>
+那天在天安门广场上，不停播放这段话语。我第一次在共和国的首都，听到了60年代的广播音。这个声音在21世纪居然显得那么亲切，感觉和电视剧的一模一样。</p>
+<p>伴随着太阳升起，五星红旗飘扬在华夏大地的苍穹。<br>
+<img src="https://sethome2.github.io/post-images/1631336790432.jpg" alt="在拍摄天安门升旗的人们" loading="lazy"></p>
+<hr>
+<p>未完待续……</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[累，没时间写]]></title>
         <id>https://sethome2.github.io/post/lei-mei-shi-jian-xie/</id>
