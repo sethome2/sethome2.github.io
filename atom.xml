@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://sethome2.github.io</id>
+    <id>http://localhost:4000</id>
     <title>sethome的橱窗</title>
-    <updated>2021-09-15T06:38:54.341Z</updated>
+    <updated>2021-09-15T06:39:13.246Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://sethome2.github.io"/>
-    <link rel="self" href="https://sethome2.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>sethome的橱窗</subtitle>
-    <logo>https://sethome2.github.io/images/avatar.png</logo>
-    <icon>https://sethome2.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, sethome的橱窗</rights>
     <entry>
         <title type="html"><![CDATA[浅谈TCP连接]]></title>
-        <id>https://sethome2.github.io/post/qian-tan-tcp-lian-jie/</id>
-        <link href="https://sethome2.github.io/post/qian-tan-tcp-lian-jie/">
+        <id>http://localhost:4000/post/qian-tan-tcp-lian-jie/</id>
+        <link href="http://localhost:4000/post/qian-tan-tcp-lian-jie/">
         </link>
         <updated>2021-09-15T06:32:26.000Z</updated>
         <content type="html"><![CDATA[<p>唔，这个其实我读《计算机网络——自顶向下方法》的一个笔记，说不上提炼吧。</p>
@@ -24,8 +24,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[北京之行——天安门升旗]]></title>
-        <id>https://sethome2.github.io/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/</id>
-        <link href="https://sethome2.github.io/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/">
+        <id>http://localhost:4000/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/</id>
+        <link href="http://localhost:4000/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/">
         </link>
         <updated>2021-09-11T04:48:12.000Z</updated>
         <content type="html"><![CDATA[<p>不知道写点啥，干啥都菜。只能随便乱写。其实这个是本年5月份去了，图片都放在桌面上<strong>好久了</strong>，就写写吧。<br>
@@ -35,21 +35,21 @@
 “天安门广场是我国……是向外国朋友展示我国风貌……疫情防控期间，请佩戴口罩……“<br>
 那天在天安门广场上，不停播放这段话语。我第一次在共和国的首都，听到了60年代的广播音。这个声音在21世纪居然显得那么亲切，感觉和电视剧的一模一样。</p>
 <p>伴随着太阳升起，五星红旗飘扬在华夏大地的苍穹。<br>
-<img src="https://sethome2.github.io/post-images/1631336790432.jpg" alt="在拍摄天安门升旗的人们" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1631336790432.jpg" alt="在拍摄天安门升旗的人们" loading="lazy"></p>
 <hr>
 <p><strong>苏州街</strong><br>
 感觉和苏州的不是很像呀，特别是阳光~维度不同。<br>
 现在都是重建的了。<br>
-<img src="https://sethome2.github.io/post-images/1631687374165.jpg" alt="苏州街道" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1631687389999.jpg" alt="苏州桥" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1631687374165.jpg" alt="苏州街道" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1631687389999.jpg" alt="苏州桥" loading="lazy"></p>
 <hr>
 <p>未完待续……（我好鸽）</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[累，没时间写]]></title>
-        <id>https://sethome2.github.io/post/lei-mei-shi-jian-xie/</id>
-        <link href="https://sethome2.github.io/post/lei-mei-shi-jian-xie/">
+        <id>http://localhost:4000/post/lei-mei-shi-jian-xie/</id>
+        <link href="http://localhost:4000/post/lei-mei-shi-jian-xie/">
         </link>
         <updated>2021-08-30T15:57:39.000Z</updated>
         <content type="html"><![CDATA[<p>Tried,Exhausted</p>
@@ -58,8 +58,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Robomaster Adam战队宣传图片]]></title>
-        <id>https://sethome2.github.io/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/</id>
-        <link href="https://sethome2.github.io/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/">
+        <id>http://localhost:4000/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/</id>
+        <link href="http://localhost:4000/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/">
         </link>
         <updated>2021-08-09T09:22:05.000Z</updated>
         <content type="html"><![CDATA[<p>目前现在在齐鲁工业大学 Adam实验室这边做robomaster，然后这边决赛打完，就放一些自己拍的图片吧~<br>
@@ -71,18 +71,18 @@
 <ol>
 <li>
 <p>先放一张我觉得最帅的<br>
-<img src="https://sethome2.github.io/post-images/1628501400933.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1628501400933.jpg" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>接下来是电控系统的一些特写<br>
-<img src="https://sethome2.github.io/post-images/1628501476409.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1628501484815.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1628503167706.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1628501476409.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1628501484815.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1628503167706.jpg" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>比赛赛场的<br>
-<img src="https://sethome2.github.io/post-images/1628503233679.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1628503244943.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1628503233679.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1628503244943.jpg" alt="" loading="lazy"></p>
 </li>
 </ol>
 <hr>
@@ -92,8 +92,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[RGB展示柜！！]]></title>
-        <id>https://sethome2.github.io/post/rgb-zhan-shi-ju/</id>
-        <link href="https://sethome2.github.io/post/rgb-zhan-shi-ju/">
+        <id>http://localhost:4000/post/rgb-zhan-shi-ju/</id>
+        <link href="http://localhost:4000/post/rgb-zhan-shi-ju/">
         </link>
         <updated>2021-07-22T07:44:35.000Z</updated>
         <content type="html"><![CDATA[<p>其实这是我高考完暑假做的东西。<br>
@@ -103,8 +103,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[贴点老图]]></title>
-        <id>https://sethome2.github.io/post/tie-dian-lao-tu/</id>
-        <link href="https://sethome2.github.io/post/tie-dian-lao-tu/">
+        <id>http://localhost:4000/post/tie-dian-lao-tu/</id>
+        <link href="http://localhost:4000/post/tie-dian-lao-tu/">
         </link>
         <updated>2021-07-20T17:49:55.000Z</updated>
         <content type="html"><![CDATA[<p>啊吧啊吧，这些都是2020-2019年拍的了，拍的不好，很垃，算是起步的第一年吧，选几张鄙人觉得还可以的放上来给大家指点一下。<br>
@@ -114,30 +114,30 @@
 <ol>
 <li>
 <p>这个是周围朋友觉得还可以的，有HDR照片的潜力（bushi），北部湾航空的飞机，是我第一次去上大学在机场拍下的。<br>
-<img src="https://sethome2.github.io/post-images/1627795472916.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1627795472916.jpg" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>看门汪，被薅得打油了。<br>
-<img src="https://sethome2.github.io/post-images/1627795554337.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1627795554337.jpg" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>摄于南宁大明山，感觉滑翔伞可以再裁剪放大一些。<br>
-<img src="https://sethome2.github.io/post-images/1627795615085.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627795618630.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1627795615085.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1627795618630.jpg" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>万马奔腾~ 感觉照片太暗了点，但是可能是我相机底小，已经满屏噪点了，不敢拉了。<br>
-<img src="https://sethome2.github.io/post-images/1627795827371.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1627795827371.jpg" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>乃学校消防演习<br>
-<img src="https://sethome2.github.io/post-images/1627795925390.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627795928352.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1627795925390.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1627795928352.jpg" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>黑暗森林现场，都是天然的大雾，爬山突然间出现的，真的快<br>
-<img src="https://sethome2.github.io/post-images/1627796195359.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627796208327.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1627796195359.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1627796208327.jpg" alt="" loading="lazy"></p>
 </li>
 </ol>
 <hr>
@@ -147,8 +147,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[用Gridea编写博客？？]]></title>
-        <id>https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/</id>
-        <link href="https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/">
+        <id>http://localhost:4000/post/yong-gridea-bian-xie-bo-ke/</id>
+        <link href="http://localhost:4000/post/yong-gridea-bian-xie-bo-ke/">
         </link>
         <updated>2021-06-22T15:24:28.000Z</updated>
         <content type="html"><![CDATA[<p>其实也没啥，打算用这玩意宣传一些玩意来自娱自乐吧!</p>
