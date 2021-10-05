@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2021-09-16T11:57:26.438Z</updated>
+    <updated>2021-10-05T02:36:56.464Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -16,10 +16,60 @@
         <link href="https://sethome2.github.io/post/qian-tan-tcp-lian-jie/">
         </link>
         <updated>2021-09-15T06:32:26.000Z</updated>
-        <content type="html"><![CDATA[<p>唔，这个其实我读《计算机网络——自顶向下方法》的一个笔记，说不上提炼吧。</p>
+        <content type="html"><![CDATA[<p>唔，这个其实我读《计算机网络——自顶向下方法》（中文第七版）的一个笔记，说不上提炼吧。可以更具页码找到更详细的信息。</p>
 <p>我们常常说TCP/IP协议，但是它们是可以拆分开，TCP只是运行在IP协议上的<strong>可靠，面向链接</strong>的一个协议。同样运行在IP协议上的，还有UDP协议，它更简单，但并没有那么可靠。理论上说，稍加修改，TCP和UDP也可以运行在IP协议以外的其他协议之上。</p>
 <hr>
 <p>我们来简单对比一下这TCP和UDP</p>
+<table>
+<thead>
+<tr>
+<th>特点 （P126）</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>报文部分</td>
+<td>包含源端口号和目的地端口号(32bit),长度和校验和(32bit)</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>无连接状态，不可靠（发送方不知道接收方是否收到），时延低，占用内存小</td>
+</tr>
+<tr>
+<td>常见应用</td>
+<td>视频电话，语音通信，流媒体传输，远程桌面</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>特点（P154）</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>报文部分(P154)</td>
+<td>源端口号和目的地端口号(32bit)，序号(seq 32bit)，确认号(32bit)，长度和某些保留备用的选项和接受窗口(32bit)，校验和及数据指指针(32bit)，选项(32bit)</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>三次握手（广为人知了），可靠链接，全双工，点对点</td>
+</tr>
+<tr>
+<td>常见应用</td>
+<td>网络游戏，邮件发送，账户登陆</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>我们将重点集中在TCP上，在TCP连接的报文部分，含有 序列号seq 和 确认号（P156）。<br>
+在TCP连接开始时，发起TCP连接的一方会发送一个seq（通常是随机的0-65535），接受的一方也会生成一个随机的seq，此后每一次传输数据后，seq自身+1.<br>
+确认号则是用于表达自己已接受了一个数据，并等待下一个序号的数据到达。</p>
+<p>三次握手<br>
+这是建立TCP之前的动作，</p>
 ]]></content>
     </entry>
     <entry>
@@ -57,40 +107,6 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Robomaster Adam战队宣传图片]]></title>
-        <id>https://sethome2.github.io/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/</id>
-        <link href="https://sethome2.github.io/post/Robomaster-adam-zhan-dui-xuan-chuan-tu-pian/">
-        </link>
-        <updated>2021-08-09T09:22:05.000Z</updated>
-        <content type="html"><![CDATA[<p>目前现在在齐鲁工业大学 Adam实验室这边做robomaster，然后这边决赛打完，就放一些自己拍的图片吧~<br>
-我还是比较喜欢拍摄静物的哈哈哈</p>
-<p>对了，我在这边主要是做电控，未来可能会学习一些机器学习的东西。</p>
-<p>转载请标明出处</p>
-<hr>
-<p>请欣赏：</p>
-<ol>
-<li>
-<p>先放一张我觉得最帅的<br>
-<img src="https://sethome2.github.io/post-images/1628501400933.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>接下来是电控系统的一些特写<br>
-<img src="https://sethome2.github.io/post-images/1628501476409.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1628501484815.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1628503167706.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>比赛赛场的<br>
-<img src="https://sethome2.github.io/post-images/1628503233679.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1628503244943.jpg" alt="" loading="lazy"></p>
-</li>
-</ol>
-<hr>
-<p>自感觉拍的还行，最近更图片有点多，打算写一下技术类的（其实是一篇技术的也没写）<br>
-对了，打算中英混合更新，练练英语。</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[RGB展示柜！！]]></title>
         <id>https://sethome2.github.io/post/rgb-zhan-shi-ju/</id>
         <link href="https://sethome2.github.io/post/rgb-zhan-shi-ju/">
@@ -99,50 +115,6 @@
         <content type="html"><![CDATA[<p>其实这是我高考完暑假做的东西。<br>
 先贴个b站链接：<a href="https://www.bilibili.com/video/BV1Lk4y127xm">b站链接</a><br>
 待填坑。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[贴点老图]]></title>
-        <id>https://sethome2.github.io/post/tie-dian-lao-tu/</id>
-        <link href="https://sethome2.github.io/post/tie-dian-lao-tu/">
-        </link>
-        <updated>2021-07-20T17:49:55.000Z</updated>
-        <content type="html"><![CDATA[<p>啊吧啊吧，这些都是2020-2019年拍的了，拍的不好，很垃，算是起步的第一年吧，选几张鄙人觉得还可以的放上来给大家指点一下。<br>
-哦对了，照片没怎么后期，基本上就是拉参数+裁剪，没咋p。</p>
-<p>非商业转载标明出处，商业电邮。</p>
-<hr>
-<ol>
-<li>
-<p>这个是周围朋友觉得还可以的，有HDR照片的潜力（bushi），北部湾航空的飞机，是我第一次去上大学在机场拍下的。<br>
-<img src="https://sethome2.github.io/post-images/1627795472916.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>看门汪，被薅得打油了。<br>
-<img src="https://sethome2.github.io/post-images/1627795554337.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>摄于南宁大明山，感觉滑翔伞可以再裁剪放大一些。<br>
-<img src="https://sethome2.github.io/post-images/1627795615085.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627795618630.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>万马奔腾~ 感觉照片太暗了点，但是可能是我相机底小，已经满屏噪点了，不敢拉了。<br>
-<img src="https://sethome2.github.io/post-images/1627795827371.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>乃学校消防演习<br>
-<img src="https://sethome2.github.io/post-images/1627795925390.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627795928352.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>黑暗森林现场，都是天然的大雾，爬山突然间出现的，真的快<br>
-<img src="https://sethome2.github.io/post-images/1627796195359.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627796208327.jpg" alt="" loading="lazy"></p>
-</li>
-</ol>
-<hr>
-<p>尽可能每周都写一下我的blog，持续更新，感兴趣可以收藏/RSS订阅。<br>
-照片基本上是一台黑卡M5A拍的。</p>
 ]]></content>
     </entry>
     <entry>

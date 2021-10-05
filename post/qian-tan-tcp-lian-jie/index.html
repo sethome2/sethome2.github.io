@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1631789828605">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1633401414173">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -34,8 +34,8 @@
 </script>
 
 
-    <meta name="description" content="唔，这个其实我读《计算机网络——自顶向下方法》的一个笔记，说不上提炼吧。
-我们常常说TCP/IP协议，但是它们是可以拆分开，TCP只是运行在IP协议上的可靠，面向链接的一个协议。同样运行在IP协议上的，还有UDP协议，它更简单，但并没有那么..." />
+    <meta name="description" content="唔，这个其实我读《计算机网络——自顶向下方法》（中文第七版）的一个笔记，说不上提炼吧。可以更具页码找到更详细的信息。
+我们常常说TCP/IP协议，但是它们是可以拆分开，TCP只是运行在IP协议上的可靠，面向链接的一个协议。同样运行在IP协议..." />
     <meta name="keywords" content="ComputerNetwork,technique,中文" />
     <script>
       var _hmt = _hmt || [];
@@ -55,7 +55,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1631789828605" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1633401414173" class="site-logo">
         <h1 class="site-title">sethome的橱窗</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -135,10 +135,60 @@
             </div>
             
                 <div class="post-content" v-pre>
-                  <p>唔，这个其实我读《计算机网络——自顶向下方法》的一个笔记，说不上提炼吧。</p>
+                  <p>唔，这个其实我读《计算机网络——自顶向下方法》（中文第七版）的一个笔记，说不上提炼吧。可以更具页码找到更详细的信息。</p>
 <p>我们常常说TCP/IP协议，但是它们是可以拆分开，TCP只是运行在IP协议上的<strong>可靠，面向链接</strong>的一个协议。同样运行在IP协议上的，还有UDP协议，它更简单，但并没有那么可靠。理论上说，稍加修改，TCP和UDP也可以运行在IP协议以外的其他协议之上。</p>
 <hr>
 <p>我们来简单对比一下这TCP和UDP</p>
+<table>
+<thead>
+<tr>
+<th>特点 （P126）</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>报文部分</td>
+<td>包含源端口号和目的地端口号(32bit),长度和校验和(32bit)</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>无连接状态，不可靠（发送方不知道接收方是否收到），时延低，占用内存小</td>
+</tr>
+<tr>
+<td>常见应用</td>
+<td>视频电话，语音通信，流媒体传输，远程桌面</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>特点（P154）</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>报文部分(P154)</td>
+<td>源端口号和目的地端口号(32bit)，序号(seq 32bit)，确认号(32bit)，长度和某些保留备用的选项和接受窗口(32bit)，校验和及数据指指针(32bit)，选项(32bit)</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>三次握手（广为人知了），可靠链接，全双工，点对点</td>
+</tr>
+<tr>
+<td>常见应用</td>
+<td>网络游戏，邮件发送，账户登陆</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>我们将重点集中在TCP上，在TCP连接的报文部分，含有 序列号seq 和 确认号（P156）。<br>
+在TCP连接开始时，发起TCP连接的一方会发送一个seq（通常是随机的0-65535），接受的一方也会生成一个随机的seq，此后每一次传输数据后，seq自身+1.<br>
+确认号则是用于表达自己已接受了一个数据，并等待下一个序号的数据到达。</p>
+<p>三次握手<br>
+这是建立TCP之前的动作，</p>
 
                 </div>
                 
