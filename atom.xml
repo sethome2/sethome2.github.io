@@ -2,14 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2021-10-28T03:09:50.770Z</updated>
+    <updated>2022-02-13T03:03:23.976Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
     <subtitle>sethome的橱窗</subtitle>
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, sethome的橱窗</rights>
+    <rights>All rights reserved 2022, sethome的橱窗</rights>
+    <entry>
+        <title type="html"><![CDATA[深夜机场]]></title>
+        <id>https://sethome2.github.io/post/shen-ye-ji-chang/</id>
+        <link href="https://sethome2.github.io/post/shen-ye-ji-chang/">
+        </link>
+        <updated>2022-02-13T03:02:20.000Z</updated>
+        <content type="html"><![CDATA[<p>( •̀ ω •́ )y特地选择了某些早班飞机，在机场拍到的，现在年轻还能熬，后面老了就不行咯</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Panda合集]]></title>
+        <id>https://sethome2.github.io/post/panda-he-ji/</id>
+        <link href="https://sethome2.github.io/post/panda-he-ji/">
+        </link>
+        <updated>2021-10-31T17:34:42.000Z</updated>
+        <content type="html"><![CDATA[<p>从北京之行单独放出来的~</p>
+<p><img src="https://sethome2.github.io/post-images/1635701715798.jpg" alt="熊猫" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635701718678.jpg" alt="熊猫" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635701721691.jpg" alt="熊猫" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635701723952.jpg" alt="熊猫" loading="lazy"></p>
+<p>拍的不是很好hhh，第一次拍这种东西<br>
+555</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[浅谈TCP连接]]></title>
         <id>https://sethome2.github.io/post/qian-tan-tcp-lian-jie/</id>
@@ -65,11 +89,25 @@
 </tbody>
 </table>
 <hr>
-<p>我们将重点集中在TCP上，在TCP连接的报文部分，含有 序列号seq 和 确认号（P156）。<br>
-在TCP连接开始时，发起TCP连接的一方会发送一个seq（通常是随机的0-65535），接受的一方也会生成一个随机的seq，此后每一次传输数据后，seq自身+1.<br>
-确认号则是用于表达自己已接受了一个数据，并等待下一个序号的数据到达。</p>
-<p>三次握手<br>
-这是建立TCP之前的动作，首先</p>
+<p>我们将重点集中在TCP上，在TCP连接的报文部分，含有 序列号Seq 和 确认号（P156）。<br>
+在TCP连接开始时，发起TCP连接的一方会发送一个Seq（通常是随机的0-65535），接受的一方也会生成一个随机的seq，此后每一次传输数据后，seq自身+1。</p>
+<p>确认号（ACK）则是用于表达自己已接受了一个数据，并等待下一个序号的数据到达。</p>
+<p>其实就是双方各自维护自己的一个序列，并确认另一方的序列号</p>
+<h1 id="建立tcp连接三次握手p166">建立TCP连接——三次握手（P166）</h1>
+<p>这是建立TCP之前的动作，客户端把TCP报文的一个标志位（SYN比特）会被置1，然后会随机生成一个序列号（client_isn），发送给服务器。<br>
+服务器在收到后，会返回一个SYN比特区域也为1的数据，其中也包含一个随机生成的序列号（server_ist）。<br>
+客户端收到后，会返回一个SYN比特为0的字节包，按照上文所述，其序列号（client_ist）会比上次客户端发出的+1.</p>
+<h1 id="关闭tcp连接p167">关闭TCP连接（P167）</h1>
+<p>相遇必有分离，在TCP链接关闭时，发起关闭的一方传输TCP报文的一个标志位（FIN比特）会被置1，另一方接收到后返回ACK（接受确认包），同时也发起FIN比特为1的包，等待其返回ACK后，TCP链接就关闭了</p>
+<p>连接建立后，上层协议就可以运作了，包括Qos之类的，一直到操作系统的Socket接口（嵌套字），这个取决于上层协议的制定。</p>
+<p>TCP的这种连接建立方式还引发了另一个问题，就是SYN泛洪攻击（感觉像是有效率的DDos）。客户端不停尝试建立TCP连接，但是建立到一半（比如到第二次握手时）就不再回应服务器的信息，导致服务器一直存储着TCP连接的状态，白白浪费了内存和CPU时间。<br>
+这种情况就有请散列函数上场了，服务器收到TCP建立请求时，先利用源和目的地IP地址和端口号进行散列函数生成自己的序列号（server_ist），并发送给客户机。<br>
+客户机第二次握手时，只需要按上面的方式，重新计算序列号（server_ist），此时只需要比较当前的序列号 == 计算序列号（server_ist） + 1即可。</p>
+<h1 id="tcp拥塞控制-p176">TCP拥塞控制 （P176）</h1>
+<p>大名鼎鼎的Qos，QUIC，DCCP，DCTCP哈哈哈<br>
+不过书中提到了很多方式去解决拥塞问题，但已经比较落后了，包括间隔超时加倍，拥塞探测的方法等等，里面还提到了一些公式去计算这些参数。</p>
+<p>大概就写这么多吧，还有很多上层协议，比如说DNS，Web，HTTP之类的可以讲，但是我没那么厉害（<br>
+不过令我惊讶的是，图论算法在计算机网络里也有广泛应用，它会在网络世界里寻找最短路径（一般不是物理距离上的，而且拥塞情况和时延）来到的目的地服务器，数据中心的路由器也需要这种方法来提高性能。</p>
 ]]></content>
     </entry>
     <entry>
@@ -85,7 +123,8 @@
 “天安门广场是我国……是向外国朋友展示我国风貌……疫情防控期间，请佩戴口罩……“<br>
 那天在天安门广场上，不停播放这段话语。我第一次在共和国的首都，听到了60年代的广播音。这个声音在21世纪居然显得那么亲切，感觉和电视剧的一模一样。</p>
 <p>伴随着太阳升起，五星红旗飘扬在华夏大地的苍穹。<br>
-<img src="https://sethome2.github.io/post-images/1631336790432.jpg" alt="在拍摄天安门升旗的人们" loading="lazy"></p>
+<img src="https://sethome2.github.io/post-images/1631336790432.jpg" alt="在拍摄天安门升旗的人们" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635821643351.jpg" alt="人们在用手机拍下升国旗的一瞬间" loading="lazy"></p>
 <hr>
 <p><strong>苏州街</strong><br>
 感觉和苏州的不是很像呀，特别是阳光~维度不同。<br>
@@ -93,7 +132,27 @@
 <img src="https://sethome2.github.io/post-images/1631687374165.jpg" alt="苏州街道" loading="lazy"><br>
 <img src="https://sethome2.github.io/post-images/1631687389999.jpg" alt="苏州桥" loading="lazy"></p>
 <hr>
-<p>未完待续……（我好鸽）</p>
+<p><strong>天坛</strong><br>
+晚上的天坛，还不错吧~<br>
+可惜没那种诗意捏，随手一拍。当时天色漆黑了，人眼都看不清楚，能拍成这样也挺不错的。<br>
+<img src="https://sethome2.github.io/post-images/1635821210024.jpg" alt="北京天坛" loading="lazy"></p>
+<hr>
+<p><strong>石狮 / 铜狮</strong><br>
+<img src="https://sethome2.github.io/post-images/1635821916090.jpg" alt="石狮" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635821922334.jpg" alt="石狮" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635821930819.jpg" alt="石狮" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635821940226.jpg" alt="石狮" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1635821999356.jpg" alt="铜狮" loading="lazy"><br>
+不说啥了，有点单调重复，没啥特色了。</p>
+<hr>
+<p>忘记了这个叫什么公园，所以说没有标题。<br>
+一般般吧，只是矮个子里拔将军，凑个数<br>
+<img src="https://sethome2.github.io/post-images/1635822067942.jpg" alt="" loading="lazy"></p>
+<hr>
+<p><strong>天坛</strong><br>
+拿这张游客进入北京天坛里面参观祈年殿做收尾吧。<br>
+<img src="https://sethome2.github.io/post-images/1635822315257.jpg" alt="游客进入北京天坛" loading="lazy"></p>
+<p>更新完啦，按理来说这个应该是在8月之前搞定的，硬生生拖到现在。当时去北京是五月一日劳动节，现在回想起来，有些事情都已经记不清了。但是有些事情还是历历在目，哪独特的景观和人文气息独有在北京才能享受到。</p>
 ]]></content>
     </entry>
     <entry>

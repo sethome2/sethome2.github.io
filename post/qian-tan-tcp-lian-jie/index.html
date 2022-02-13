@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1633401414173">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1644721401307">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -24,38 +24,60 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-P786JZL"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGN093XZS4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'GTM-P786JZL');
+  gtag('config', 'G-GGN093XZS4');
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?962ffd213ed43ff588cf9a794c723d58";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P786JZL');
+</script>
+<!-- End Google Tag Manager -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGN093XZS4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GGN093XZS4');
 </script>
 
 
     <meta name="description" content="唔，这个其实我读《计算机网络——自顶向下方法》（中文第七版）的一个笔记，说不上提炼吧。可以更具页码找到更详细的信息。
 我们常常说TCP/IP协议，但是它们是可以拆分开，TCP只是运行在IP协议上的可靠，面向链接的一个协议。同样运行在IP协议..." />
     <meta name="keywords" content="ComputerNetwork,technique,中文" />
-    <script>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?962ffd213ed43ff588cf9a794c723d58";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P786JZL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
   <div id="app" class="main">
 
     <div class="sidebar" :class="{ 'full-height': menuVisible }">
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1633401414173" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1644721401307" class="site-logo">
         <h1 class="site-title">sethome的橱窗</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -118,7 +140,8 @@
       sethome的橱窗
     </div>
     <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://sethome2.github.io/atom.xml" target="_blank">RSS</a>
+      <p></a>友情链接<a href="https://lian-yi.github.io/">lian-yi</a></p>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a class="rss" href="https://sethome2.github.io/atom.xml" target="_blank">RSS</a>
     </div>
   </div>
 </div>
@@ -184,11 +207,25 @@
 </tbody>
 </table>
 <hr>
-<p>我们将重点集中在TCP上，在TCP连接的报文部分，含有 序列号seq 和 确认号（P156）。<br>
-在TCP连接开始时，发起TCP连接的一方会发送一个seq（通常是随机的0-65535），接受的一方也会生成一个随机的seq，此后每一次传输数据后，seq自身+1.<br>
-确认号则是用于表达自己已接受了一个数据，并等待下一个序号的数据到达。</p>
-<p>三次握手<br>
-这是建立TCP之前的动作，</p>
+<p>我们将重点集中在TCP上，在TCP连接的报文部分，含有 序列号Seq 和 确认号（P156）。<br>
+在TCP连接开始时，发起TCP连接的一方会发送一个Seq（通常是随机的0-65535），接受的一方也会生成一个随机的seq，此后每一次传输数据后，seq自身+1。</p>
+<p>确认号（ACK）则是用于表达自己已接受了一个数据，并等待下一个序号的数据到达。</p>
+<p>其实就是双方各自维护自己的一个序列，并确认另一方的序列号</p>
+<h1 id="建立tcp连接三次握手p166">建立TCP连接——三次握手（P166）</h1>
+<p>这是建立TCP之前的动作，客户端把TCP报文的一个标志位（SYN比特）会被置1，然后会随机生成一个序列号（client_isn），发送给服务器。<br>
+服务器在收到后，会返回一个SYN比特区域也为1的数据，其中也包含一个随机生成的序列号（server_ist）。<br>
+客户端收到后，会返回一个SYN比特为0的字节包，按照上文所述，其序列号（client_ist）会比上次客户端发出的+1.</p>
+<h1 id="关闭tcp连接p167">关闭TCP连接（P167）</h1>
+<p>相遇必有分离，在TCP链接关闭时，发起关闭的一方传输TCP报文的一个标志位（FIN比特）会被置1，另一方接收到后返回ACK（接受确认包），同时也发起FIN比特为1的包，等待其返回ACK后，TCP链接就关闭了</p>
+<p>连接建立后，上层协议就可以运作了，包括Qos之类的，一直到操作系统的Socket接口（嵌套字），这个取决于上层协议的制定。</p>
+<p>TCP的这种连接建立方式还引发了另一个问题，就是SYN泛洪攻击（感觉像是有效率的DDos）。客户端不停尝试建立TCP连接，但是建立到一半（比如到第二次握手时）就不再回应服务器的信息，导致服务器一直存储着TCP连接的状态，白白浪费了内存和CPU时间。<br>
+这种情况就有请散列函数上场了，服务器收到TCP建立请求时，先利用源和目的地IP地址和端口号进行散列函数生成自己的序列号（server_ist），并发送给客户机。<br>
+客户机第二次握手时，只需要按上面的方式，重新计算序列号（server_ist），此时只需要比较当前的序列号 == 计算序列号（server_ist） + 1即可。</p>
+<h1 id="tcp拥塞控制-p176">TCP拥塞控制 （P176）</h1>
+<p>大名鼎鼎的Qos，QUIC，DCCP，DCTCP哈哈哈<br>
+不过书中提到了很多方式去解决拥塞问题，但已经比较落后了，包括间隔超时加倍，拥塞探测的方法等等，里面还提到了一些公式去计算这些参数。</p>
+<p>大概就写这么多吧，还有很多上层协议，比如说DNS，Web，HTTP之类的可以讲，但是我没那么厉害（<br>
+不过令我惊讶的是，图论算法在计算机网络里也有广泛应用，它会在网络世界里寻找最短路径（一般不是物理距离上的，而且拥塞情况和时延）来到的目的地服务器，数据中心的路由器也需要这种方法来提高性能。</p>
 
                 </div>
                 
