@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-02-22T06:08:51.512Z</updated>
+    <updated>2022-02-26T03:34:16.767Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -17,6 +17,9 @@
         </link>
         <updated>2022-02-13T03:02:20.000Z</updated>
         <content type="html"><![CDATA[<p>( •̀ ω •́ )y特地选择了某些早班飞机，在机场拍到的，现在年轻还能熬，后面老了就不行咯</p>
+<p>这些都是在青岛机场拍的<br>
+<img src="https://sethome2.github.io/post-images/1645846275529.jpg" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="https://sethome2.github.io/post-images/1645846278706.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
