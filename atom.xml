@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-03-19T17:37:23.884Z</updated>
+    <updated>2022-03-19T17:44:08.994Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -18,22 +18,22 @@
         <updated>2022-03-19T17:22:33.000Z</updated>
         <content type="html"><![CDATA[<p>按照某个OI圈内十分著名的大神写的，把自己常用的给写在里面hhhhh</p>
 <p>其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵</p>
-<p>线性素数筛<br>
-&quot;&quot;&quot;<br>
-bool is_prime[1000001] = {};</p>
-<p>void produce()<br>
-{<br>
-memset(&amp;is_prime, 1, sizeof(is_prime));<br>
-is_prime[0] = is_prime[1] = 0;<br>
-for (unsigned long long i = 2; i &lt;= 1000000; i++)<br>
-{<br>
-if (i * i &lt;= 1000000)<br>
-for (unsigned long long j = i * i; j &lt;= 1000000; j += i)<br>
-is_prime[j] = 0;<br>
-}<br>
-}<br>
-&quot;&quot;&quot;<br>
-素数打表（遇到就可以直接cv了wwwww,1000001个<br>
+<p>线性素数筛</p>
+<pre><code>bool is_prime[1000001] = {};
+
+void produce()
+{
+  memset(&amp;is_prime, 1, sizeof(is_prime));
+  is_prime[0] = is_prime[1] = 0;
+  for (unsigned long long i = 2; i &lt;= 1000000; i++)
+  {
+    if (i * i &lt;= 1000000)
+      for (unsigned long long j = i * i; j &lt;= 1000000; j += i)
+        is_prime[j] = 0;
+  }
+}
+</code></pre>
+<p>素数打表（遇到就可以直接cv了wwwww,1000001个<br>
 <a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a></p>
 ]]></content>
     </entry>
@@ -50,7 +50,7 @@ is_prime[j] = 0;<br>
 <p>后续我把济南的写上来。</p>
 <p>更新</p>
 <p>济南机场的半夜。啊，其实这个很一般，但是为了凑数，强行挤出来的。<br>
-<img src="https://sethome2.github.io/post-images/1647606247450.webp" alt="济南机场的半夜" loading="lazy"></p>
+<img src="https://sethome2.github.io/post-images/1647606247450.jpg" alt="济南机场的半夜" loading="lazy"></p>
 <p>（高情商）还有很大进步空间</p>
 ]]></content>
     </entry>
