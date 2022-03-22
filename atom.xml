@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-03-19T17:44:08.994Z</updated>
+    <updated>2022-03-22T01:50:05.161Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -18,8 +18,12 @@
         <updated>2022-03-19T17:22:33.000Z</updated>
         <content type="html"><![CDATA[<p>按照某个OI圈内十分著名的大神写的，把自己常用的给写在里面hhhhh</p>
 <p>其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵</p>
+<p>常用的宏定义</p>
+<pre><code class="language-c++">#define THREE_MAX(a, b, c) (a &gt; b ? (a &gt; c ? a : c) : (b &gt; c ? b : c)) 
+#define THREE_MIN(a, b, c) (a &gt; b ? (b &gt; c ? c : b) : (a &gt; c ? c : a)) 
+</code></pre>
 <p>线性素数筛</p>
-<pre><code>bool is_prime[1000001] = {};
+<pre><code class="language-c++">bool is_prime[1000001] = {};
 
 void produce()
 {
@@ -33,8 +37,12 @@ void produce()
   }
 }
 </code></pre>
-<p>素数打表（遇到就可以直接cv了wwwww,1000001个<br>
-<a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a></p>
+<p>素数打表（遇到就可以直接cv了wwwww,1000001个）<br>
+<a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a><br>
+<a href="https://blog.sethome.cc/algorithmFiles/prefixSumPrime.txt">素数前缀和</a></p>
+<p>利用费马定理的玄学素数筛</p>
+<pre><code class="language-c++">
+</code></pre>
 ]]></content>
     </entry>
     <entry>

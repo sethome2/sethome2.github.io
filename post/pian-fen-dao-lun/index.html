@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1647711824018">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1647913799549">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -62,8 +62,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta name="description" content="按照某个OI圈内十分著名的大神写的，把自己常用的给写在里面hhhhh
 其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵
-线性素数筛
-bool is_prime[1000001] = {};..." />
+常用的宏定义
+#define THREE_MAX(a, b, c) ..." />
     <meta name="keywords" content="algorithm,technique,中文" />
 </head>
 
@@ -79,7 +79,7 @@ bool is_prime[1000001] = {};..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1647711824018" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1647913799549" class="site-logo">
         <h1 class="site-title">sethome的橱窗</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -170,8 +170,12 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea
                 <div class="post-content" v-pre>
                   <p>按照某个OI圈内十分著名的大神写的，把自己常用的给写在里面hhhhh</p>
 <p>其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵</p>
+<p>常用的宏定义</p>
+<pre><code class="language-c++">#define THREE_MAX(a, b, c) (a &gt; b ? (a &gt; c ? a : c) : (b &gt; c ? b : c)) 
+#define THREE_MIN(a, b, c) (a &gt; b ? (b &gt; c ? c : b) : (a &gt; c ? c : a)) 
+</code></pre>
 <p>线性素数筛</p>
-<pre><code>bool is_prime[1000001] = {};
+<pre><code class="language-c++">bool is_prime[1000001] = {};
 
 void produce()
 {
@@ -185,8 +189,12 @@ void produce()
   }
 }
 </code></pre>
-<p>素数打表（遇到就可以直接cv了wwwww,1000001个<br>
-<a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a></p>
+<p>素数打表（遇到就可以直接cv了wwwww,1000001个）<br>
+<a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a><br>
+<a href="https://blog.sethome.cc/algorithmFiles/prefixSumPrime.txt">素数前缀和</a></p>
+<p>利用费马定理的玄学素数筛</p>
+<pre><code class="language-c++">
+</code></pre>
 
                 </div>
                 
