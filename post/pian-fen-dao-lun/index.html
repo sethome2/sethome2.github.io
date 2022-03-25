@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1647952666244">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1648173128012">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -60,10 +60,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 
 
-    <meta name="description" content="按照某个OI圈内十分著名的大神写的，把自己常用的给写在里面hhhhh
-其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵
-常用的宏定义
-#include &quot;bits/stdc++...." />
+    <meta name="description" content="按照某个OI圈内十分著名的大神(ID:我是智障)写的，把自己常用的给写在里面hhhhh，都是偏向技巧性的东西，集成了大量在竞赛中非正解骗分的方法。
+在这里贴上一段顺口溜
+
+骗分过样例，暴力出奇迹。暴搜挂着机，打表出省一。N方过百万，暴力踩标..." />
     <meta name="keywords" content="algorithm,technique,中文" />
 </head>
 
@@ -79,7 +79,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1647952666244" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1648173128012" class="site-logo">
         <h1 class="site-title">sethome的橱窗</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -168,17 +168,34 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea
             </div>
             
                 <div class="post-content" v-pre>
-                  <p>按照某个OI圈内十分著名的大神写的，把自己常用的给写在里面hhhhh</p>
-<p>其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵</p>
-<p>常用的宏定义</p>
+                  <p>按照某个OI圈内十分著名的大神(ID:我是智障)写的，把自己常用的给写在里面hhhhh，都是偏向技巧性的东西，集成了大量在竞赛中非正解骗分的方法。</p>
+<p>在这里贴上一段顺口溜</p>
+<blockquote>
+<p>骗分过样例，暴力出奇迹。暴搜挂着机，打表出省一。N方过百万，暴力踩标算。肥修赛大象，只是代码短。<br>
+想要骗到分，一定有方法。图论背模板，数论背公式，动规背方程，高精背代码，要是都不会，干脆输样例。</p>
+</blockquote>
+<p>其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵。</p>
+<p>本文章会稳定慢慢更新，欢迎收藏呀</p>
+<h1 id="常用的宏定义">常用的宏定义</h1>
 <pre><code class="language-c++">#include &quot;bits/stdc++.h&quot;
 #define THREE_MAX(a, b, c) (a &gt; b ? (a &gt; c ? a : c) : (b &gt; c ? b : c)) 
 #define THREE_MIN(a, b, c) (a &gt; b ? (b &gt; c ? c : b) : (a &gt; c ? c : a)) 
 #define DEBUG freopen(&quot;in.txt&quot;,&quot;r+&quot;,stdin);
 #define MAKE freopen(&quot;out.txt&quot;,&quot;w+&quot;,stdout);
+#define FOREACH(a,b) for(int a = 0;a &lt; b;a++)
 #define INIT(a,b) memset(a,b,sizeof(a));
+#define ULL unsigned long long
+#define LL long long
+
+int main()
+{
+    // DEBUG
+    // MAKE
+
+    return 0;
+}
 </code></pre>
-<p>线性素数筛</p>
+<h1 id="线性素数筛">线性素数筛</h1>
 <pre><code class="language-c++">bool is_prime[1000001] = {};
 
 void produce()
