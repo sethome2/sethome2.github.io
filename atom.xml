@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-03-25T01:52:10.243Z</updated>
+    <updated>2022-04-05T14:29:35.992Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, sethome的橱窗</rights>
+    <entry>
+        <title type="html"><![CDATA[背包DP]]></title>
+        <id>https://sethome2.github.io/post/bei-bao-dp/</id>
+        <link href="https://sethome2.github.io/post/bei-bao-dp/">
+        </link>
+        <updated>2022-03-25T14:13:54.000Z</updated>
+        <content type="html"><![CDATA[<p>嘶，突然想起来，高中的时候其实没有认真学过DP（动态规划）的，记忆化搜索和DP只能说是异曲同工之妙，真正的DP核心在于状态转移方程。</p>
+<p>之前遇到DP问题，都是直接恩算，尝试找出二维网格里面的一些关系。今天想了想，是应该从背包DP——这最简单的DP开始，一点一点理解动态规划了。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[骗分导论]]></title>
         <id>https://sethome2.github.io/post/pian-fen-dao-lun/</id>
@@ -34,6 +44,8 @@
 #define INIT(a,b) memset(a,b,sizeof(a));
 #define ULL unsigned long long
 #define LL long long
+#define endl '\n'
+using namespace std;
 
 int main()
 {
@@ -315,15 +327,6 @@ void produce()
 <hr>
 <p>尽可能每周都写一下我的blog，持续更新，感兴趣可以收藏/RSS订阅。<br>
 照片基本上是一台黑卡M5A拍的。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[用Gridea编写博客？？]]></title>
-        <id>https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/</id>
-        <link href="https://sethome2.github.io/post/yong-gridea-bian-xie-bo-ke/">
-        </link>
-        <updated>2021-06-22T15:24:28.000Z</updated>
-        <content type="html"><![CDATA[<p>其实也没啥，打算用这玩意宣传一些玩意来自娱自乐吧!</p>
 ]]></content>
     </entry>
 </feed>
