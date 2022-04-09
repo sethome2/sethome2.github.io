@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-04-09T12:21:47.830Z</updated>
+    <updated>2022-04-09T12:54:30.356Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -27,10 +27,12 @@
         <updated>2022-03-25T14:13:54.000Z</updated>
         <content type="html"><![CDATA[<p>嘶，突然想起来，高中的时候其实没有认真学过DP（动态规划）的，记忆化搜索和DP只能说是异曲同工之妙，真正的DP核心在于状态转移方程。</p>
 <p>之前遇到DP问题，都是直接恩算，尝试找出二维网格里面的一些关系。今天想了想，是应该从背包DP——这最简单的DP开始，一点一点理解动态规划了。</p>
+<p>** 动态规划是一种通过把原问题分解为更简单的子问题，求解子问题来解决复杂问题的方法 **</p>
+<p>长期更新~人菜瘾大。</p>
 <h1 id="什么是背包dp">什么是背包DP？</h1>
 <p>背包问题简洁的表述就是</p>
 <blockquote>
-<p>有N个物品，每个物品的价值为V<sub>i</sub>，同时它的重量为W<sub>i</sub>，有一个背包能装总重为M的物品，<br>
+<p>有N个物品，第i个物品的价值为V<sub>i</sub>，同时它的重量为W<sub>i</sub>，有一个背包能装总重为M的物品，<br>
 如何取物品，才能使背包内所有物品的价值最大？</p>
 </blockquote>
 <p>** 背包DP可以被分为以下几个类型 **</p>
@@ -60,6 +62,46 @@
 </tr>
 </tbody>
 </table>
+<h1 id="01背包">01背包</h1>
+<p>先讲01背包。<br>
+参考题目：<a href="https://www.luogu.com.cn/problem/P2871">P2871 [USACO07DEC]Charm Bracelet S</a></p>
+<blockquote>
+<p>有N个物品，第i个物品的价值为V<sub>i</sub>，同时它的重量为W<sub>i</sub>且只能取一次，<br>
+有一个背包能装总重为M的物品，如何取物品，才能使背包内所有物品的价值最大？</p>
+</blockquote>
+<p>不难想出，我们可以试试每个物品拿或者不拿，可能的组合非常大，为时间复杂度为O(2<sub>N</sub>)。<br>
+哪怕如果遇到超过背包装不下的状态而跳过，也是不能接受的复杂度。</p>
+<p>先把问题简化一下吧，考虑在三个物品的情况下，背包问题如何解决。</p>
+<p>构造一下数据，假设我们的背包能装总重量4的物品（M=4）。</p>
+<table>
+<thead>
+<tr>
+<th>物品序号N<sub>i</sub></th>
+<th>重量W<sub>i</sub></th>
+<th>价值V<sub>i</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>15</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>20</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p>肉眼观察法，一眼定真，很明显拿取 物品0 和 物品1 是最优的选择。<br>
+但是，如何求解呢？<br>
+但是某种程度上我们可以求性价比（P=$$\frac{V<sub>i</sub>}{W<sub>i</sub>}$$）</p>
 ]]></content>
     </entry>
     <entry>
