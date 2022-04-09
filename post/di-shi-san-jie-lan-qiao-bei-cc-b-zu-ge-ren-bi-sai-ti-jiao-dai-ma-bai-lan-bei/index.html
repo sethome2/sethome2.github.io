@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" >
+
+<title>第十三届蓝桥杯C/C++ B组个人比赛提交代码（摆烂杯 | sethome的橱窗</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1649518276171">
+<link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGN093XZS4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GGN093XZS4');
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?962ffd213ed43ff588cf9a794c723d58";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P786JZL');
+</script>
+<!-- End Google Tag Manager -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGN093XZS4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GGN093XZS4');
+</script>
+
+
+    <meta name="description" content="填空题
+有一说一，今年没只有两个没想到
+T1 题A: 九进制转十进制
+感觉没啥好说的，逢9进1。 ans=93×2+92×0+91×2+2ans = 9^3 \times 2 + 9^2 \times 0 + 9^1 \times 2 + ..." />
+    <meta name="keywords" content="" />
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P786JZL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <div id="app" class="main">
+
+    <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://sethome2.github.io">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1649518276171" class="site-logo">
+        <h1 class="site-title">sethome的橱窗</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://sethome2.github.io" class="site-nav">
+            首页 / Home
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/tag/VvCd9lSL-/" class="site-nav">
+            奇怪的项目 / Project
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/tag/T7U4S5FR5/" class="site-nav">
+            照片 / Picture
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/tags" class="site-nav">
+            文章标签 / Article Tags
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/archives" class="site-nav">
+            文章列表 / Article List
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/post/about" class="site-nav">
+            关于 / About
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/post/you-qing-lian-jie" class="site-nav" target="_blank">
+            友情链接 / ExchangeLink
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/sethome2" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      sethome的橱窗
+    </div>
+    <div class="site-footer">
+      <p>除另有声明外，图片不得商用，商业电邮</p>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea
+<div target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45012202000129" style="color:#dee2e6;">桂公网安备 45012202000129号<p></p></div>
+<a href="http://www.beian.miit.gov.cn/" style="color:#dee2e6;"> 桂ICP备2022001235号-1</a><p></p> | <a class="rss" href="https://sethome2.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">
+              第十三届蓝桥杯C/C++ B组个人比赛提交代码（摆烂杯
+            </h2>
+            <div class="post-date">
+              2022-04-09
+            </div>
+            
+                <div class="post-content" v-pre>
+                  <h1 id="填空题">填空题</h1>
+<p>有一说一，今年没只有两个没想到</p>
+<p>T1 题A: 九进制转十进制<br>
+感觉没啥好说的，逢9进1。 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><msup><mn>9</mn><mn>3</mn></msup><mo>×</mo><mn>2</mn><mo>+</mo><msup><mn>9</mn><mn>2</mn></msup><mo>×</mo><mn>0</mn><mo>+</mo><msup><mn>9</mn><mn>1</mn></msup><mo>×</mo><mn>2</mn><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">ans = 9^3 \times 2 + 9^2 \times 0 + 9^1 \times 2 + 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">9</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">9</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">9</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></p>
+<pre><code>1478 // should 1458 + 18 + 2 = 1,478
+</code></pre>
+<p>T2 题B: 顺子日期<br>
+蓝桥杯歧义，建议冲锋</p>
+<pre><code>4
+</code></pre>
+<hr>
+<h1 id="大题">大题</h1>
+<p>我犯了很多错误，已自裁</p>
+<p>T1 题C: 刷题统计<br>
+送分题，不多说，不开ULL，见祖宗。</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+using namespace std;
+
+#define ULL unsigned long long
+
+ULL a, b, n;
+
+int main()
+{
+  cin &gt;&gt; a &gt;&gt; b &gt;&gt; n;
+
+  ULL week = 0;
+  week = a * 5 + b * 2;
+
+  ULL week_cnt = n / week;
+  n = n % week;
+
+  ULL day = 0;
+  while (n &gt; 0)
+  {
+    if (day &lt; 5)
+    {
+      n -= a;
+      day++;
+    }
+    else
+    {
+      n -= b;
+      day++;
+    }
+  }
+  day += week_cnt * 7;
+  cout &lt;&lt; day;
+
+  return 0;
+}
+</code></pre>
+<p>T2 题D: 修剪灌木<br>
+找规律，不会的话可以像我一样，多写点数据，就出来了</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+using namespace std;
+
+#define ULL unsigned long long
+
+ULL tree[10001] = {};
+
+ULL n;
+
+int main()
+{
+  cin &gt;&gt; n;
+  ULL index = n;
+  if ((index % 2) == 1)
+    index = index / 2 + 1;
+  else
+  {
+    index = index / 2;
+  }
+
+  for (int i = 1; i &lt;= index; i++)
+  {
+    tree[i] = (n - i) * 2;
+  }
+
+  for (int i = 1; i &lt;= index; i++)
+  {
+      cout &lt;&lt; tree[i] &lt;&lt; endl;
+  }
+
+  if ((n % 2) == 1)
+    index--;
+
+  for (int i = index; i &gt; 0; i--)
+  {
+    cout &lt;&lt; tree[i] &lt;&lt; endl;
+  }
+
+  return 0;
+}
+</code></pre>
+<p>T3 题E: X 进制减法<br>
+看样例，主要是要理解，我手写了120 对应11 5 2 进制的数，就稍微理解了。<br>
+求出值一减就行。</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#define FOREACH(a, b) for (int a = 0; i &lt; b; a++)
+#define ULL unsigned long long 
+using namespace std;
+
+int N = 0;
+
+int aLen = 0;
+int a[1001] = {};
+
+int bLen = 0;
+int b[1001] = {};
+
+int base[1001] = {};
+
+ULL an;
+ULL bn;
+
+int main()
+{
+  //freopen(&quot;in.txt&quot;, &quot;r+&quot;, stdin);
+
+  cin &gt;&gt; N;
+  cin &gt;&gt; aLen;
+  for (int i = 0; i &lt; aLen; i++)
+  {
+    cin &gt;&gt; a[i];
+  }
+
+  cin &gt;&gt; bLen;
+  for (int i = 0; i &lt; bLen; i++)
+  {
+    cin &gt;&gt; b[i];
+  }
+
+  //找进制
+  for (int i = 0; i &lt; aLen; i++)
+  {
+    if (a[i] &gt; b[i])
+    {
+      if (a[i] == 0 || a[i] == 1)
+        base[i] = 2;
+      else
+        base[i] = a[i] + 1;
+    }
+    else
+    {
+      if (b[i] == 0 || b[i] == 1)
+        base[i] = 2;
+      else
+        base[i] = b[i] + 1;
+    }
+  }
+  int max = 0, max_index = 0;
+  for (int i = 0; i &lt; aLen; i++)
+  {
+    if (a[i] &gt; max)
+    {
+      max = a[i];
+      max_index = i;
+    }
+    if (b[i] &gt; max)
+    {
+      max = b[i];
+      max_index = i;
+    }
+  }
+  base[max_index] = N;
+
+  //计算值
+  ULL jin = 1;
+  for (int i = aLen - 1; i &gt;= 0; i--)
+  {
+
+    if (i - (aLen - 1) == 0)
+      an += a[i];
+    else if (i - (aLen - 1) == 1)
+    {
+      jin *= base[i + 1];
+      an += a[i] * base[i + 1];
+    }
+    else
+    {
+      jin *= base[i + 1];
+      an += (a[i] * jin) % 1000000007;
+    }
+  }
+  // cout &lt;&lt; an &lt;&lt; endl;
+
+  jin = 1;
+  for (int i = bLen - 1; i &gt;= 0; i--)
+  {
+
+    if (i - (bLen - 1) == 0)
+      bn += b[i];
+    else if (i - (bLen - 1) == 1)
+    {
+      jin *= base[i + 1];
+      bn += b[i] * base[i + 1];
+    }
+    else
+    {
+      jin *= base[i + 1];
+      bn += (b[i] * jin) % 1000000007;
+    }
+  }
+  // cout &lt;&lt; bn &lt;&lt; endl;
+
+  cout &lt;&lt; (an - bn) % 1000000007 &lt;&lt; endl;
+
+  return 0;
+}
+</code></pre>
+<p>T4 题F: 统计子矩阵<br>
+摆烂没写(实际上是时间不够了），四重for循环也能写出来，但是感觉不是正解。<br>
+理论上可以前缀和优化？蓝桥杯必出前缀和来着。</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#define ULL unsigned long long
+using namespace std;
+
+int x, y, N;
+
+int arr[501][501] = {};
+
+ULL cnt = 0;
+
+int main()
+{
+    cin &gt;&gt; x;
+    cin &gt;&gt; y;
+    cin &gt;&gt; N;
+
+    for (int i = 0; i &lt; y; i++)
+        for (int j = 0; j &lt; x; j++)
+        {
+            cin &gt;&gt; arr[y][x];
+            if(arr[y][x] &lt;= N)
+                cnt++;
+        }
+
+    // 四重for暴力找
+    
+    return 0;
+}
+</code></pre>
+<p>T5 题G: 积木画<br>
+不会，想着可能是DP，找规律恶心我了，写出2*4知道大概有11个？就没写，严格来说就写了读入。<br>
+按理来说应该是有规律的，2 5 11。</p>
+<p>大佬说是二重前缀和，和大佬贴贴（lianyi超强的，他在友链里面，快去看看</p>
+<p>T6 题H: 扫雷<br>
+有点长hhh，现场学的map。<br>
+爆搜挂着机，可能出现在找圆的时候TIME OUT，我人应该是魔怔了，应该读入的时候做优化的<br>
+也就是说。。。优化了炸弹爆炸，应该就可以AC，应该还是遍历MAP树的方式，或者说队列，我是xxx</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#include &quot;vector&quot;
+#include &quot;map&quot;
+
+#define ULL unsigned long long
+using namespace std;
+
+int n, m;
+
+typedef struct node
+{
+  /* data */
+  ULL x, y;
+  ULL range;
+};
+
+map&lt;pair&lt;ULL, ULL&gt;, int&gt; BOOM_map;
+map&lt;pair&lt;ULL, ULL&gt;, int&gt; FIRE_map;
+
+node boom[50000];
+node fire[50000];
+
+ULL cnt;
+
+//检查是不是炸弹
+inline bool cheak(int x, int y)
+{
+  auto res = BOOM_map.find(pair&lt;ULL, ULL&gt;(x, y));
+
+  if (res == BOOM_map.end())
+    return false;
+  else
+    return true;
+}
+
+//以圆圈方式查找炸弹，已经炸的-1
+void dfs(int x, int y, int range)
+{
+  int i = 0, j = 0;
+  while (1)
+  {
+    if (i * i + j * j &lt;= range * range)
+    {
+      if (cheak(i, j))
+      {
+        //开炸 dfs寻找
+        int range_n = BOOM_map.at(pair&lt;ULL, ULL&gt;(i + x, j + y));
+        if (range_n != -1)
+        {
+          cnt++;
+          BOOM_map.at(pair&lt;ULL, ULL&gt;(i + x, j + y)) = -1;
+          dfs(i, j, range_n);
+        }
+      }
+      if (cheak(-i, j))
+      {
+        int range_n = BOOM_map.at(pair&lt;ULL, ULL&gt;(-i + x, j + y));
+        if (range_n != -1)
+        {
+          cnt++;
+          BOOM_map.at(pair&lt;ULL, ULL&gt;(-i + x, j + y)) = -1;
+          dfs(-i, j, range_n);
+        }
+      }
+      if (cheak(i, -j))
+      {
+        int range_n = BOOM_map.at(pair&lt;ULL, ULL&gt;(i + x, -j + y));
+        if (range_n != -1)
+        {
+          cnt++;
+          BOOM_map.at(pair&lt;ULL, ULL&gt;(i + x, -j + y)) = -1;
+          dfs(i, -j, range_n);
+        }
+      }
+      if (cheak(-i, -j))
+      {
+        int range_n = BOOM_map.at(pair&lt;ULL, ULL&gt;(-i + x, -j + y));
+        if (range_n != -1)
+        {
+          cnt++;
+          BOOM_map.at(pair&lt;ULL, ULL&gt;(-i + x, -j + y)) = -1;
+          dfs(-i, -j, range_n);
+        }
+      }
+
+      i++;
+      j++;
+    }
+    else
+      break;
+  }
+}
+
+int main()
+{
+  cin &gt;&gt; n &gt;&gt; m;
+  for (int i = 0; i &lt; n; i++)
+  {
+    cin &gt;&gt; boom[i].x &gt;&gt; boom[i].y &gt;&gt; boom[i].range;
+    BOOM_map.insert(pair&lt;pair&lt;ULL, ULL&gt;, int&gt;(pair&lt;ULL, ULL&gt;(boom[i].x, boom[i].y), boom[i].range));
+  }
+  for (int i = 0; i &lt; m; i++)
+  {
+    cin &gt;&gt; fire[i].x &gt;&gt; fire[i].y &gt;&gt; fire[i].range;
+    FIRE_map.insert(pair&lt;pair&lt;ULL, ULL&gt;,int&gt;(pair&lt;ULL, ULL&gt;(fire[i].x, fire[i].y), fire[i].range));
+  }
+
+  // 遍历火箭map
+  for (auto iter : FIRE_map)
+  {
+    int x = iter.first.first;
+    int y = iter.first.second;
+
+    int range = iter.second;
+    dfs(x, y, range);
+  }
+
+  cout &lt;&lt; cnt;
+
+  return 0;
+}
+</code></pre>
+<p>T7 题 I: 李白打酒加强版<br>
+最后10分钟，没写完，就这样吧，退出有问题，别看了，放着凑字数</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#define ULL unsigned long long
+using namespace std;
+
+ULL N, M; // double sub1
+
+ULL cnt;
+
+ULL jiu = 0;
+
+void dfs()
+{
+  if (N == 0 &amp;&amp; M == 0)
+  {
+    cnt++;
+    cnt %= 1000000007;
+    return;
+  }
+  if (N &lt; 0 || jiu &lt; 0 || M &lt; 0)
+    return;
+
+  N = N - 1;
+  jiu *= 2;
+  dfs();
+  N++;
+  jiu /= 2;
+
+  M--;
+  jiu--;
+  dfs();
+  jiu++;
+  M++;
+}
+
+int main()
+{
+  cin &gt;&gt; N &gt;&gt; M;
+  dfs();
+  cout &lt;&lt; cnt;
+  return 0;
+}
+</code></pre>
+<p>T8 题J: 砍竹子<br>
+有思路，没时间，后面补了注释，就这样吧，有点暴力，但我觉得是对的。<br>
+STL不够熟，哈希模板不备，就是这个下场</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#include &quot;map&quot;
+#include &quot;cmath&quot;
+#include &quot;vector&quot;
+#define ULL unsigned long long
+using namespace std;
+
+map&lt;ULL, int&gt; arr; // 高度 数量
+
+unsigned int num;
+
+ULL cntMAX;
+
+void dfs(ULL cnt)
+{
+  // 如果都为 0 跳出循环
+  // 根据cnt 剪枝
+  for (auto iter = arr.rbegin(); iter != arr.rend(); iter++)// 问题在于，迭代器失效 似乎砍之后会给有效的迭代器
+  {
+    // 逆序读取高度 这样才是最高的
+    // 砍第一个
+    // 没砍到比第二个小的？继续砍
+    // dfs
+    // 还原第一个
+  }
+}
+
+int main()
+{
+  cin &gt;&gt; num;
+  for (int i = 0; i &lt; num; i++)
+  {
+    ULL high;
+    cin &gt;&gt; high;
+    if (arr.find(high) == arr.end())
+      arr.insert(pair&lt;ULL, int&gt;(high, (int)1));
+    else
+      arr.at(high)++;
+  }
+
+  dfs(0);
+
+  cout &lt;&lt; cntMAX;
+
+  return 0;
+}
+</code></pre>
+
+                </div>
+                
+                    
+                      <div class="next-post">
+                        <div class="next">下一篇</div>
+                        <a href="https://sethome2.github.io/post/chang-yong-de-suan-fa-ji-qiao/">
+                          <h3 class="post-title">
+                            常用的算法技巧
+                          </h3>
+                        </a>
+                      </div>
+                      
+
+                        
+                          
+                            <div id="gitalk-container" data-aos="fade-in"></div>
+                            
+
+                              
+                                  
+
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a66037dc805d2519c1e3',
+        clientSecret: 'b7e25dec0121f83ddf7d31405733e5fb26b08bbd',
+        repo: 'comment-website',
+        owner: 'sethome2',
+        admin: ['sethome2'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+</body>
+
+</html>
