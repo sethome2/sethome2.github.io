@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-04-09T14:37:18.117Z</updated>
+    <updated>2022-04-09T14:43:14.771Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -25,11 +25,7 @@
         <link href="https://sethome2.github.io/post/bei-bao-dp/">
         </link>
         <updated>2022-03-25T14:13:54.000Z</updated>
-        <content type="html"><![CDATA[<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-	<script  src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-	<script  src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-<p>嘶，突然想起来，高中的时候其实没有认真学过DP（动态规划）的，记忆化搜索和DP只能说是异曲同工之妙，真正的DP核心在于状态转移方程。</p>
+        <content type="html"><![CDATA[<p>嘶，突然想起来，高中的时候其实没有认真学过DP（动态规划）的，记忆化搜索和DP只能说是异曲同工之妙，真正的DP核心在于状态转移方程。</p>
 <p>之前遇到DP问题，都是直接恩算，尝试找出二维网格里面的一些关系。今天想了想，是应该从背包DP——这最简单的DP开始，一点一点理解动态规划了。</p>
 <p><strong>动态规划是一种通过把原问题分解为更简单的子问题，求解子问题来解决复杂问题的方法</strong></p>
 <p>长期更新~人菜瘾大。</p>
@@ -106,11 +102,9 @@
 <p>肉眼观察法，一眼定真，很明显拿取 物品0 和 物品1 是最优的选择。<br>
 但是，如何求解呢？<br>
 但是某种程度上我们可以求性价比$$P=\frac{V<sub>i</sub>}{W<sub>i</sub>}$$</p>
-<script type="text/javascript" >
-	katex.render("P=\frac{V~i~}{W~i~}", document.getElementById("math"), {
-    throwOnError: false
-});
-</script>]]></content>
+<script type="text/javascript" >katex.render("P=\frac{V~i~}{W~i~}", document.getElementById("math"), {throwOnError: false});</script>
+<p>ss</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[骗分导论]]></title>
