@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-04-05T14:29:35.992Z</updated>
+    <updated>2022-04-09T12:08:57.429Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -11,6 +11,15 @@
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, sethome的橱窗</rights>
     <entry>
+        <title type="html"><![CDATA[常用的算法技巧]]></title>
+        <id>https://sethome2.github.io/post/chang-yong-de-suan-fa-ji-qiao/</id>
+        <link href="https://sethome2.github.io/post/chang-yong-de-suan-fa-ji-qiao/">
+        </link>
+        <updated>2022-04-09T11:48:53.000Z</updated>
+        <content type="html"><![CDATA[<p>稍微和骗分导论分开一下，这里主要是搜集算法竞赛一些常用的代码模板和使用小技巧之类的，欢迎收藏~</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[背包DP]]></title>
         <id>https://sethome2.github.io/post/bei-bao-dp/</id>
         <link href="https://sethome2.github.io/post/bei-bao-dp/">
@@ -18,6 +27,39 @@
         <updated>2022-03-25T14:13:54.000Z</updated>
         <content type="html"><![CDATA[<p>嘶，突然想起来，高中的时候其实没有认真学过DP（动态规划）的，记忆化搜索和DP只能说是异曲同工之妙，真正的DP核心在于状态转移方程。</p>
 <p>之前遇到DP问题，都是直接恩算，尝试找出二维网格里面的一些关系。今天想了想，是应该从背包DP——这最简单的DP开始，一点一点理解动态规划了。</p>
+<h1 id="什么是背包dp">什么是背包DP？</h1>
+<p>背包问题简洁的表述就是</p>
+<blockquote>
+<p>有N个物品，每个物品的价值为V<sub>i</sub>，同时它的重量为W<sub>i</sub>，有一个背包能装总重为M的物品，<br>
+如何取物品，才能使背包内所有物品的价值最大？</p>
+</blockquote>
+<p>** 背包DP可以被分为以下几个类型 **</p>
+<table>
+<thead>
+<tr>
+<th>背包类型</th>
+<th>特殊条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01背包</td>
+<td>每个物品只能被拿取一次</td>
+</tr>
+<tr>
+<td>完全背包</td>
+<td>每个物品物品都可以被重复拿取</td>
+</tr>
+<tr>
+<td>多重背包</td>
+<td>现在有两个以上的独立背包用于拿取了</td>
+</tr>
+<tr>
+<td>混合背包</td>
+<td>上面三种的混合，物品可以被拿(1, k, ∞)次，同时又有两个以上的背包</td>
+</tr>
+</tbody>
+</table>
 ]]></content>
     </entry>
     <entry>
@@ -283,50 +325,6 @@ void produce()
         <content type="html"><![CDATA[<p>其实这是我高考完暑假做的东西。<br>
 先贴个b站链接：<a href="https://www.bilibili.com/video/BV1Lk4y127xm">b站链接</a><br>
 待填坑。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[贴点老图]]></title>
-        <id>https://sethome2.github.io/post/tie-dian-lao-tu/</id>
-        <link href="https://sethome2.github.io/post/tie-dian-lao-tu/">
-        </link>
-        <updated>2021-07-20T17:49:55.000Z</updated>
-        <content type="html"><![CDATA[<p>啊吧啊吧，这些都是2020-2019年拍的了，拍的不好，很垃，算是起步的第一年吧，选几张鄙人觉得还可以的放上来给大家指点一下。<br>
-哦对了，照片没怎么后期，基本上就是拉参数+裁剪，没咋p。</p>
-<p>非商业转载标明出处，商业电邮。</p>
-<hr>
-<ol>
-<li>
-<p>这个是周围朋友觉得还可以的，有HDR照片的潜力（bushi），北部湾航空的飞机，是我第一次去上大学在机场拍下的。<br>
-<img src="https://sethome2.github.io/post-images/1627795472916.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>看门汪，被薅得打油了。<br>
-<img src="https://sethome2.github.io/post-images/1627795554337.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>摄于南宁大明山，感觉滑翔伞可以再裁剪放大一些。<br>
-<img src="https://sethome2.github.io/post-images/1627795615085.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627795618630.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>万马奔腾~ 感觉照片太暗了点，但是可能是我相机底小，已经满屏噪点了，不敢拉了。<br>
-<img src="https://sethome2.github.io/post-images/1627795827371.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>乃学校消防演习<br>
-<img src="https://sethome2.github.io/post-images/1627795925390.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627795928352.jpg" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>黑暗森林现场，都是天然的大雾，爬山突然间出现的，真的快<br>
-<img src="https://sethome2.github.io/post-images/1627796195359.jpg" alt="" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1627796208327.jpg" alt="" loading="lazy"></p>
-</li>
-</ol>
-<hr>
-<p>尽可能每周都写一下我的blog，持续更新，感兴趣可以收藏/RSS订阅。<br>
-照片基本上是一台黑卡M5A拍的。</p>
 ]]></content>
     </entry>
 </feed>
