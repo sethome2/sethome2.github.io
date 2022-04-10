@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-04-09T17:28:27.162Z</updated>
+    <updated>2022-04-10T18:19:01.051Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -495,7 +495,7 @@ int main()
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[背包DP]]></title>
+        <title type="html"><![CDATA[背包DP 保姆级教程 包教包会]]></title>
         <id>https://sethome2.github.io/post/bei-bao-dp/</id>
         <link href="https://sethome2.github.io/post/bei-bao-dp/">
         </link>
@@ -537,7 +537,7 @@ int main()
 </tr>
 </tbody>
 </table>
-<h1 id="01背包">01背包</h1>
+<h1 id="01背包问题">01背包问题</h1>
 <p>先讲01背包。<br>
 参考题目：<a href="https://www.luogu.com.cn/problem/P2871">P2871 [USACO07DEC]Charm Bracelet S</a></p>
 <blockquote>
@@ -547,7 +547,7 @@ int main()
 <p>不难想出，我们可以试试每个物品拿或者不拿，可能的组合非常大，为时间复杂度为O(2<sub>N</sub>)。<br>
 哪怕如果遇到超过背包装不下的状态而跳过，也是不能接受的复杂度。</p>
 <p>先把问题简化一下吧，考虑在三个物品的情况下，背包问题如何解决。</p>
-<p>构造一下数据，假设我们的背包能装总重量4的物品（M=4）。</p>
+<p>构造一下数据<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，假设我们的背包能装总重量4的物品（M=4）。</p>
 <table>
 <thead>
 <tr>
@@ -575,8 +575,216 @@ int main()
 </tbody>
 </table>
 <p>肉眼观察法，一眼定真，很明显拿取 物品0 和 物品1 是最优的选择。<br>
-但是，如何求解呢？<br>
-但是某种程度上我们可以求性价比$ P_i = \frac{V_i}{W_i} $，可我们很容易就举出一个反例。</p>
+但是，如何求解呢？</p>
+<p>某种程度上我们可以求性价比<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>V</mi><mi>i</mi></msub><msub><mi>W</mi><mi>i</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">P_i=\frac{V_i}{W_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3335309999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884309999999999em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，,他完美符合我们上述的数据，可我们很容易就举出一个反例。<br>
+假设背包能装总重为10的物品。</p>
+<table>
+<thead>
+<tr>
+<th>物品序号N<sub>i</sub></th>
+<th>重量W<sub>i</sub></th>
+<th>价值V<sub>i</sub></th>
+<th>性价比P<sub>i</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>7</td>
+<td>14</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>6</td>
+<td>11</td>
+<td>1.83</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>7</td>
+<td>1.75</td>
+</tr>
+</tbody>
+</table>
+<p>如果按性价比贪心（只拿最高性价比的）就不能比拿取物品1和2的拥有更高价值，也就不能用于处理背包问题。某种意义上可以帮助简化搜索的过程，但是搜索不是正解（记忆化搜索除外，但也属于一种DP）。</p>
+<p>回到最初的哪个例子，我们把问题再次简化一下，<strong>将问题分解为情况更小更简单的子问题</strong>。如果我们有能装总重量为M的背包，考虑容量更小的背包，以及更少的物品的情况下呢。</p>
+<p>根据上面的假设，我们可以列出这样的一个表格，我们把问题拆分为 <strong>只拿前i个物品</strong> 和 <strong>更小的背包</strong> 的情况。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>背包容量为0</th>
+<th>背包容量为1</th>
+<th>背包容量为2</th>
+<th>背包容量为3</th>
+<th>背包容量为4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只拿前1个物品</td>
+<td>0</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td>只拿前2个物品</td>
+<td>0</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>只拿前3个物品</td>
+<td>0</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p>不难理解，如果只拿前1个（包括第1个，后面也是）物品，<strong>我们在背包能装得下的情况下（第一行可能不全是物品一的价值）</strong>，就是最优解。这个子问题，解决。</p>
+<p>那么只拿前2个呢？现在我们尝试通过子问题来求解新的问题。<br>
+我们可以知道分别在背包为0-4的重量时，只考虑拿物品0的最优解。对于我们的只拿前2个的情况，<strong>就是考虑在拿1个的基础上，拿或不拿物品1</strong>。<br>
+我们假设当前背包容量为M<sub>i</sub>，以下为重点。</p>
+<ul>
+<li>拿取了物品1 ：总价值 = 物品0在背包容量为(M<sub>i</sub>减物品1的重量)的价值 + N<sub>1</sub>的价值</li>
+<li>放弃物品1 : 总价值 = 物品0在背包容量为M<sub>i</sub>的价值</li>
+</ul>
+<blockquote>
+<p>为什么拿取物品0时，背包容量是原容量减去物品1的重量？<br>
+因为拿取物品0时，背包空间就相当于少了物品1的重量，自然要去找子问题的最优解，也就是物品0在此背包容量大小的最大值<br>
+假如物品装不下怎么办？<br>
+不拿。</p>
+</blockquote>
+<p>选取 <strong>拿取与放弃物品1的总价值</strong> 中最大的值，我们就可以知道在背包容量为M<sub>i</sub>的情况下的最优解。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>背包容量为0</th>
+<th>背包容量为1</th>
+<th>背包容量为2</th>
+<th>背包容量为3</th>
+<th>背包容量为4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只拿前1个物品</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>只拿前2个物品</td>
+<td>15</td>
+<td>15</td>
+<td>20</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td>只拿前3个物品</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>以背包容量为3的情况举例，物品1价值20，重量3。</p>
+<ul>
+<li>拿取物品1的总价值 = 物品0在背包容量为0的价值 + 物品1价值 = 20</li>
+<li>放弃物品1的总价值 = 物品0在背包容量为3的价值 = 15<br>
+所以应拿取物品1，总价值为20</li>
+</ul>
+</blockquote>
+<p>是不是有点思路了？类似数学归纳法，我们可以发现，只拿前3个物品的情况下，也就是只拿前2个物品的情况下，考虑拿或不拿物品2的总价值，谁更高。<br>
+在前三个物品且背包容量为4就可以知道我们需要的解。</p>
+<p>接下来我们用符号来解释，刚才我们的表就是DP数组，假设选取i为序号≧i的物品，j就是当前背包的容量。<br>
+物品序号从0开始哦。<br>
+W<sub>i</sub>为序号i的物品重量，V<sub>i</sub>为序号i的物品价值。</p>
+<strong>
+DP[i][j] = max(不拿N~i~的总价值, 拿取N~i~)
+<p>DP[i][j] = max(DP[i - 1][j],  DP[i - 1][j - W<sub>i</sub>] + V<sub>i</sub>)<br>
+</strong></p>
+<blockquote>
+<p>不能理解的可以去看看前面通过子问题计算某个状态的最大值。使用了符号来表达而已。</p>
+</blockquote>
+<p>最终得到的结果如下，结果就是右下角的DP[2][5] = 35，即为背包的最大价值。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>j = 0</th>
+<th>j = 1</th>
+<th>j = 2</th>
+<th>j = 3</th>
+<th>j = 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i = 0</td>
+<td>0</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td>i = 1</td>
+<td>0</td>
+<td>15</td>
+<td>15</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr>
+<td>i = 2</td>
+<td>0</td>
+<td>15</td>
+<td>15</td>
+<td>30</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<p>解 参考题目：<a href="https://www.luogu.com.cn/problem/P2871">P2871 [USACO07DEC]Charm Bracelet S</a></p>
+<pre><code class="language-C++">for (int i = 1; i &lt;= n; i++) // 从前两个物品开始DP
+{
+	for (int j = 1; j &lt;= M; j++) // 假设背包重量从1开始递归
+	{
+		if (j &gt;= W[i])//如果背包装得下当前的物体
+		{
+			DP[i][j] = max(DP[i - 1][j], DP[i - 1][j - W[i]] +V[i]);// 寻找最大值
+		}
+		else//如果背包装不下当前物体
+		{
+			DP[i][j] = DP[i - 1][j];
+		}
+	}
+</code></pre>
+<h2 id="解释这一切">解释这一切</h2>
+<h1 id="完全背包问题">完全背包问题</h1>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>这里参考了<a href="https://zhuanlan.zhihu.com/p/345364527">这篇文章</a>的数据，感谢作者的付出。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 ]]></content>
     </entry>
     <entry>
