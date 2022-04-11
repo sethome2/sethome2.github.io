@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-04-10T18:19:01.051Z</updated>
+    <updated>2022-04-11T03:10:10.891Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -659,8 +659,8 @@ int main()
 </ul>
 <blockquote>
 <p>为什么拿取物品0时，背包容量是原容量减去物品1的重量？<br>
-因为拿取物品0时，背包空间就相当于少了物品1的重量，自然要去找子问题的最优解，也就是物品0在此背包容量大小的最大值<br>
-假如物品装不下怎么办？<br>
+因为拿取物品0时，背包空间就相当于少了物品1的重量，自然要去找子问题的最优解，也就是物品0在此背包容量大小的最大值</p>
+<p>假如物品装不下怎么办？<br>
 不拿。</p>
 </blockquote>
 <p>选取 <strong>拿取与放弃物品1的总价值</strong> 中最大的值，我们就可以知道在背包容量为M<sub>i</sub>的情况下的最优解。</p>
@@ -716,7 +716,7 @@ int main()
 物品序号从0开始哦。<br>
 W<sub>i</sub>为序号i的物品重量，V<sub>i</sub>为序号i的物品价值。</p>
 <strong>
-DP[i][j] = max(不拿N~i~的总价值, 拿取N~i~)
+DP[i][j] = max(不拿N~i~的总价值, 拿取N~i~的总价值)
 <p>DP[i][j] = max(DP[i - 1][j],  DP[i - 1][j - W<sub>i</sub>] + V<sub>i</sub>)<br>
 </strong></p>
 <blockquote>
@@ -761,22 +761,45 @@ DP[i][j] = max(不拿N~i~的总价值, 拿取N~i~)
 </tr>
 </tbody>
 </table>
-<p>解 参考题目：<a href="https://www.luogu.com.cn/problem/P2871">P2871 [USACO07DEC]Charm Bracelet S</a></p>
-<pre><code class="language-C++">for (int i = 1; i &lt;= n; i++) // 从前两个物品开始DP
+<p>现在我们可以尝试解上文题目了<br>
+参考题目：<a href="https://www.luogu.com.cn/problem/P2871">P2871 [USACO07DEC]Charm Bracelet S</a></p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#include &quot;cmath&quot;
+using namespace std;
+
+int DP[3402][99999] = {0}; // 数组DP
+int N = 0, M = 0;		   // 物品数量与背包容量
+
+int N_W[3500] = {0}; // 物品重量
+int N_V[3500] = {0}; // 物品价值
+
+int main()
 {
-	for (int j = 1; j &lt;= M; j++) // 假设背包重量从1开始递归
-	{
-		if (j &gt;= W[i])//如果背包装得下当前的物体
-		{
-			DP[i][j] = max(DP[i - 1][j], DP[i - 1][j - W[i]] +V[i]);// 寻找最大值
-		}
-		else//如果背包装不下当前物体
-		{
-			DP[i][j] = DP[i - 1][j];
-		}
-	}
+	cin &gt;&gt; N &gt;&gt; M; // 读取数据
+	for (int i = 0; i &lt; N; i++)
+		cin &gt;&gt; N_W[i] &gt;&gt; N_V[i];
+
+	for (int i = 0; i &lt;= M; i++) // 初始化第一个物品的情况
+		if (i &gt;= N_W[0])
+			DP[0][i] = N_V[0];
+
+	for (int i = 1; i &lt; N; i++) // DP循环
+		for (int j = 1; j &lt;= M; j++)
+			if (j &gt;= N_W[i])												  // 背包容量要大于物品容量才能拿取
+				DP[i][j] = max(DP[i - 1][j], DP[i - 1][j - N_W[i]] + N_V[i]); //比较拿取与不拿取谁更大
+			else
+				DP[i][j] = DP[i - 1][j];
+
+	cout &lt;&lt; DP[N - 1][M]; // 输出结果
+	return 0;
+}
+
 </code></pre>
+<p>__ HOLD SHIT, MLE(Memory Limit Exceed)! 二维数组需要的数据量还是太大了，导致了内存过大，要AC这个题，我们需要接近2GB的内存容量__</p>
+<h2 id="优化dp数组">优化DP数组</h2>
+<p>分析代码，可以发现DP数组是导致内存膨胀的主要原因。</p>
 <h2 id="解释这一切">解释这一切</h2>
+<p>DP(Dynamic programming)，动态规划。</p>
 <h1 id="完全背包问题">完全背包问题</h1>
 <hr class="footnotes-sep">
 <section class="footnotes">
