@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1649766552484">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1649768069946">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -59,6 +59,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('config', 'G-GGN093XZS4');
 </script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+
 
     <meta name="description" content="嘶，突然想起来，高中的时候其实没有认真学过DP（动态规划）的，记忆化搜索和DP只能说是异曲同工之妙，真正的DP核心在于状态转移方程。
 之前遇到DP问题，都是直接恩算，尝试找出二维网格里面的一些关系。今天想了想，是应该从背包DP——这最简单的..." />
@@ -77,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1649766552484" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1649768069946" class="site-logo">
         <h1 class="site-title">sethome的橱窗</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -568,8 +576,8 @@ int main()
 <blockquote>
 <p>最优子结构：原问题的最优解所包含的子问题的解也能得到最优解<br>
 无后效性：子问题的最优解一旦确定，就不再改变。（即使后面有更大更复杂的问题）<br>
-子问题的重叠性: 在使用模拟或者递归求解时，总是会重复的求解某些子问题<br>
-如果我们构造的子问题有任一不满足，则很可能不能使用DP思想。</p>
+子问题的重叠性: 在使用模拟或者递归求解时，总是会重复的求解某些子问题</p>
+<p>如果我们构造的子问题有任一不满足，则很可能不能使用DP思想。</p>
 </blockquote>
 <p>在我们成功构造子问题后，需要查找子问题与原问题的关系规则，也就是 <strong>动态转移方程</strong>。这个也是DP最难的问题，在下也没用很好的技巧帮助你。<br>
 个人解题习惯会展开子问题与原问题的解（类似我们构造二维DP数组），构造部分数据手算答案，再寻找可能的关系与规则。</p>

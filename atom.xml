@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-04-12T12:29:15.425Z</updated>
+    <updated>2022-04-12T12:55:37.513Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -492,6 +492,52 @@ int main()
         </link>
         <updated>2022-04-09T11:48:53.000Z</updated>
         <content type="html"><![CDATA[<p>稍微和骗分导论分开一下，这里主要是搜集算法竞赛一些常用的代码模板和使用小技巧之类的，欢迎收藏~</p>
+<p>长期更新哦！</p>
+<h1 id="常用的宏定义">常用的宏定义</h1>
+<pre><code class="language-c++">#include &quot;bits/stdc++.h&quot;
+#define THREE_MAX(a, b, c) (a &gt; b ? (a &gt; c ? a : c) : (b &gt; c ? b : c)) 
+#define THREE_MIN(a, b, c) (a &gt; b ? (b &gt; c ? c : b) : (a &gt; c ? c : a)) 
+#define DEBUG freopen(&quot;in.txt&quot;,&quot;r+&quot;,stdin);
+#define MAKE freopen(&quot;out.txt&quot;,&quot;w+&quot;,stdout);
+#define FOREACH(a,b) for(int a = 0;a &lt; b;a++)
+#define INIT(a,b) memset(a,b,sizeof(a));
+#define ULL unsigned long long
+#define LL long long
+#define endl '\n'
+using namespace std;
+
+int main()
+{
+    // DEBUG
+    // MAKE
+
+    return 0;
+}
+</code></pre>
+<h2 id="稍微解释一些宏定义的作用">稍微解释一些宏定义的作用</h2>
+<p>DEBUG，可以很方便的调试输入样例，重新定向输入流到文件（再也不需要从文本框粘贴啦）。<br>
+MAKE，打表用。<br>
+FOREACH可以节约打for的时间，还更加简洁，当然这个得看个人习惯，也做不到Qt的Foreach智能</p>
+<h1 id="线性素数筛">线性素数筛</h1>
+<pre><code class="language-c++">bool is_prime[1000001] = {};
+
+void produce()
+{
+  memset(&amp;is_prime, 1, sizeof(is_prime));
+  is_prime[0] = is_prime[1] = 0;
+  for (unsigned long long i = 2; i &lt;= 1000000; i++)
+  {
+    if (i * i &lt;= 1000000)
+      for (unsigned long long j = i * i; j &lt;= 1000000; j += i)
+        is_prime[j] = 0;
+  }
+}
+</code></pre>
+<p>素数打表（遇到就可以直接cv了wwwww,1000001个）<br>
+<a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a></p>
+<p>利用小费马定理的玄学素数筛（因为太玄学又不大用得到就删去了，知道有这个东西就行）</p>
+<pre><code class="language-c++">
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -895,8 +941,8 @@ int main()
 <blockquote>
 <p>最优子结构：原问题的最优解所包含的子问题的解也能得到最优解<br>
 无后效性：子问题的最优解一旦确定，就不再改变。（即使后面有更大更复杂的问题）<br>
-子问题的重叠性: 在使用模拟或者递归求解时，总是会重复的求解某些子问题<br>
-如果我们构造的子问题有任一不满足，则很可能不能使用DP思想。</p>
+子问题的重叠性: 在使用模拟或者递归求解时，总是会重复的求解某些子问题</p>
+<p>如果我们构造的子问题有任一不满足，则很可能不能使用DP思想。</p>
 </blockquote>
 <p>在我们成功构造子问题后，需要查找子问题与原问题的关系规则，也就是 <strong>动态转移方程</strong>。这个也是DP最难的问题，在下也没用很好的技巧帮助你。<br>
 个人解题习惯会展开子问题与原问题的解（类似我们构造二维DP数组），构造部分数据手算答案，再寻找可能的关系与规则。</p>
@@ -920,55 +966,22 @@ int main()
         <link href="https://sethome2.github.io/post/pian-fen-dao-lun/">
         </link>
         <updated>2022-03-19T17:22:33.000Z</updated>
-        <content type="html"><![CDATA[<p>按照某个OI圈内十分著名的大神(ID:我是智障)写的，把自己常用的给写在里面hhhhh，都是偏向技巧性的东西，集成了大量在竞赛中非正解骗分的方法。</p>
+        <content type="html"><![CDATA[<p>按照某个OI圈内十分著名的大神(ID:我是智障)写的，把自己常用的给写在里面hhhhh，都是偏向技巧性的东西，集成了大量在OI竞赛中非正解骗分的方法。</p>
 <p>在这里贴上一段顺口溜</p>
 <blockquote>
 <p>骗分过样例，暴力出奇迹。暴搜挂着机，打表出省一。N方过百万，暴力踩标算。肥修赛大象，只是代码短。<br>
 想要骗到分，一定有方法。图论背模板，数论背公式，动规背方程，高精背代码，要是都不会，干脆输样例。</p>
 </blockquote>
 <p>其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵。</p>
-<p>本文章会稳定慢慢更新，欢迎收藏呀</p>
-<h1 id="常用的宏定义">常用的宏定义</h1>
-<pre><code class="language-c++">#include &quot;bits/stdc++.h&quot;
-#define THREE_MAX(a, b, c) (a &gt; b ? (a &gt; c ? a : c) : (b &gt; c ? b : c)) 
-#define THREE_MIN(a, b, c) (a &gt; b ? (b &gt; c ? c : b) : (a &gt; c ? c : a)) 
-#define DEBUG freopen(&quot;in.txt&quot;,&quot;r+&quot;,stdin);
-#define MAKE freopen(&quot;out.txt&quot;,&quot;w+&quot;,stdout);
-#define FOREACH(a,b) for(int a = 0;a &lt; b;a++)
-#define INIT(a,b) memset(a,b,sizeof(a));
-#define ULL unsigned long long
-#define LL long long
-#define endl '\n'
-using namespace std;
-
-int main()
-{
-    // DEBUG
-    // MAKE
-
-    return 0;
-}
-</code></pre>
-<h1 id="线性素数筛">线性素数筛</h1>
-<pre><code class="language-c++">bool is_prime[1000001] = {};
-
-void produce()
-{
-  memset(&amp;is_prime, 1, sizeof(is_prime));
-  is_prime[0] = is_prime[1] = 0;
-  for (unsigned long long i = 2; i &lt;= 1000000; i++)
-  {
-    if (i * i &lt;= 1000000)
-      for (unsigned long long j = i * i; j &lt;= 1000000; j += i)
-        is_prime[j] = 0;
-  }
-}
-</code></pre>
-<p>素数打表（遇到就可以直接cv了wwwww,1000001个）<br>
-<a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a></p>
-<p>利用费马定理的玄学素数筛</p>
-<pre><code class="language-c++">
-</code></pre>
+<p>其实这些技巧大多只会出现在OI赛制。</p>
+<p>本文章会稳定慢慢更新，欢迎收藏呀。</p>
+<h1 id="骗样例">骗样例</h1>
+<p><strong>遇到样例就输出结果</strong></p>
+<p>也就是顺口溜开头的骗分过样例<br>
+OI赛制可用技巧，部分比赛也行。但是现在开始鸡贼了一个测试点有很多测试数据，只要有一个不过就没有这个测试点的分，麻。</p>
+<h1 id="打表">打表</h1>
+<p><strong>存所有的答案</strong></p>
+<p>不仅限于题目答案，比如说可以把素数的真值表以code的形式存储也算。参见常用的算法技巧文章。没啥可说的，下一个。</p>
 ]]></content>
     </entry>
     <entry>
