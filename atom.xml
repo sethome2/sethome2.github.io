@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗</title>
-    <updated>2022-04-11T03:10:10.891Z</updated>
+    <updated>2022-04-12T12:29:15.425Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -495,7 +495,7 @@ int main()
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[背包DP 保姆级教程 包教包会]]></title>
+        <title type="html"><![CDATA[背包DP问题+动态规划 保姆级教程 包教包会]]></title>
         <id>https://sethome2.github.io/post/bei-bao-dp/</id>
         <link href="https://sethome2.github.io/post/bei-bao-dp/">
         </link>
@@ -711,7 +711,7 @@ int main()
 </ul>
 </blockquote>
 <p>是不是有点思路了？类似数学归纳法，我们可以发现，只拿前3个物品的情况下，也就是只拿前2个物品的情况下，考虑拿或不拿物品2的总价值，谁更高。<br>
-在前三个物品且背包容量为4就可以知道我们需要的解。</p>
+在前三个物品且背包容量为4的状态下就是我们需要的解。</p>
 <p>接下来我们用符号来解释，刚才我们的表就是DP数组，假设选取i为序号≧i的物品，j就是当前背包的容量。<br>
 物品序号从0开始哦。<br>
 W<sub>i</sub>为序号i的物品重量，V<sub>i</sub>为序号i的物品价值。</p>
@@ -786,21 +786,125 @@ int main()
 	for (int i = 1; i &lt; N; i++) // DP循环
 		for (int j = 1; j &lt;= M; j++)
 			if (j &gt;= N_W[i])												  // 背包容量要大于物品容量才能拿取
-				DP[i][j] = max(DP[i - 1][j], DP[i - 1][j - N_W[i]] + N_V[i]); //比较拿取与不拿取谁更大
+				DP[i][j] = max(DP[i - 1][j], DP[i - 1][j - N_W[i]] + N_V[i]); // 比较拿取与不拿取谁更大
 			else
 				DP[i][j] = DP[i - 1][j];
 
 	cout &lt;&lt; DP[N - 1][M]; // 输出结果
 	return 0;
 }
-
 </code></pre>
-<p>__ HOLD SHIT, MLE(Memory Limit Exceed)! 二维数组需要的数据量还是太大了，导致了内存过大，要AC这个题，我们需要接近2GB的内存容量__</p>
+<p>__ HOLD SHIT, MLE(Memory Limit Exceed)! 二维数组需要的数据量还是太大了__，导致了内存过大，要AC这个题，我们需要接近2GB的内存容量(逃</p>
 <h2 id="优化dp数组">优化DP数组</h2>
-<p>分析代码，可以发现DP数组是导致内存膨胀的主要原因。</p>
-<h2 id="解释这一切">解释这一切</h2>
-<p>DP(Dynamic programming)，动态规划。</p>
+<p>分析代码，可以发现DP数组是导致内存膨胀的主要原因。<br>
+还是以刚才的DP数组为例，我们发现，当我们更新i = 2这一列的时候，i = 1以前的数据是完全不需要的。<br>
+也就是说，前 i - 2 的物品数据是完全不会被使用到的，这样我们就可以用一维数组存储数据了。</p>
+<table>
+<thead>
+<tr>
+<th>j = 0</th>
+<th>j = 1</th>
+<th>j = 2</th>
+<th>j = 3</th>
+<th>j = 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>15</td>
+<td>15</td>
+<td>30</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<p>同时我们再对背包容量的循环做些优化，可以得到以下代码。</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#include &quot;cmath&quot;
+using namespace std;
+
+int DP[12882] = {0}; // 数组DP
+int N = 0, M = 0;	 // 物品数量与背包容量
+
+int N_W[3500] = {0}; // 物品重量
+int N_V[3500] = {0}; // 物品价值
+
+int main()
+{
+	cin &gt;&gt; N &gt;&gt; M; // 读取数据
+	for (int i = 0; i &lt; N; i++)
+		cin &gt;&gt; N_W[i] &gt;&gt; N_V[i];
+
+	for (int i = 0; i &lt; N; i++) // DP循环
+		for (int j = M; j &gt;= N_W[i]; j--)
+			DP[j] = max(DP[j], DP[j - N_W[i]] + N_V[i]);
+
+	cout &lt;&lt; DP[M]; // 输出结果
+
+	return 0;
+}
+</code></pre>
+<blockquote>
+<p>注：此时第二个for的遍历顺序必须从大往小，因为在二维DP数组中，我们拿取第i个物品时，DP[i - 1][j]是不会被更新的。<br>
+但是在一维数组下，物品i在被拿取后，DP[j]就被立即更新，在后续随着j的更新，max(DP[j], DP[j - N_W[i]] + N_V[i])会取到之前被更新的值，也就可以被重复拿取了。<br>
+<strong>事实上，调换更新顺序就是完全背包问题的解法</strong></p>
+</blockquote>
 <h1 id="完全背包问题">完全背包问题</h1>
+<p>仔细阅读01背包问题的一维解法，你会发现，交换第二层for的顺序就可以完成了。提供代码如下。<br>
+这里就不啰嗦了（其实是不知道怎么在md里面链接自己的段落）。</p>
+<pre><code class="language-C++">#include &quot;iostream&quot;
+#include &quot;cmath&quot;
+using namespace std;
+
+int DP[12882] = {0}; // 数组DP
+int N = 0, M = 0;	 // 物品数量与背包容量
+
+int N_W[3500] = {0}; // 物品重量
+int N_V[3500] = {0}; // 物品价值
+
+int main()
+{
+	cin &gt;&gt; N &gt;&gt; M; // 读取数据
+	for (int i = 0; i &lt; N; i++)
+		cin &gt;&gt; N_W[i] &gt;&gt; N_V[i];
+
+	for (int i = 0; i &lt; N; i++) // DP循环
+		for (int j = M; j &gt;= N_W[i]; j--)
+			DP[j] = max(DP[j], DP[j - N_W[i]] + N_V[i]);
+
+	cout &lt;&lt; DP[M]; // 输出结果
+
+	return 0;
+}
+</code></pre>
+<h1 id="在重新理解一次理解dp有点对不起这个标题">在重新理解一次理解DP（有点对不起这个标题</h1>
+<p>DP(Dynamic programming)，动态规划。（我并不认为它的名字和思想有什么关联）</p>
+<blockquote>
+<p><strong>动态规划是一种通过把原问题分解为更简单的子问题，求解子问题来解决复杂问题的方法</strong></p>
+</blockquote>
+<p>通常我们解题的过程如下：</p>
+<ol>
+<li>我们在尝试解决背包问题的时候，最先开始制定了一种可能的规则，把原问题分解为不同的子问题。</li>
+<li>尝试寻找从i - 1状态（或者更前的状态），更新到当前i状态的规则与方程。（也叫 <strong>动态转移方程</strong> ）</li>
+<li>确定状态的 <strong>边界</strong>（前面的解释中我们提前了一步）</li>
+<li>根据动态转移方程，得出最终的答案</li>
+</ol>
+<p>一步一步来解释吧。<br>
+在第一步中，我们将问题分解的过程中需要考虑__最优子结构__ 和 <strong>无后效性</strong>  以及  <strong>子问题的重叠性</strong>。</p>
+<blockquote>
+<p>最优子结构：原问题的最优解所包含的子问题的解也能得到最优解<br>
+无后效性：子问题的最优解一旦确定，就不再改变。（即使后面有更大更复杂的问题）<br>
+子问题的重叠性: 在使用模拟或者递归求解时，总是会重复的求解某些子问题<br>
+如果我们构造的子问题有任一不满足，则很可能不能使用DP思想。</p>
+</blockquote>
+<p>在我们成功构造子问题后，需要查找子问题与原问题的关系规则，也就是 <strong>动态转移方程</strong>。这个也是DP最难的问题，在下也没用很好的技巧帮助你。<br>
+个人解题习惯会展开子问题与原问题的解（类似我们构造二维DP数组），构造部分数据手算答案，再寻找可能的关系与规则。</p>
+<p>接下来是 <strong>边界</strong>，其实就是动态转移中的第一个状态。<br>
+一个问题总不能有无限的子问题，至少在求解的时候不能，这就需要我们自己构造合理的数据填入，然后再开始进行动态转移。在背包DP的例子中，我们的边界就是背包容量为0和前一个物品的时候。</p>
+<p>最后还是要啰嗦的是，一个问题满足以下条件后，才可能使用DP思想解决，<strong>最优子结构</strong> 和 <strong>无后效性</strong>  以及  <strong>子问题的重叠性</strong>。</p>
+<hr>
+<p>终于写完啦，写了5h，希望还能对你有所帮助。如果可以的话还请收藏我的blog哦。</p>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
