@@ -758,3 +758,37 @@ a {
   font-size: 16px;
   margin: 4px 8px;
 }
+
+      <style>
+    .exchange-link {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: space-around !important;
+        align-items: stretch !important;
+    }
+
+    .pic {
+        border-radius: 50% !important;
+        border: 1px solid #dee2e6 !important;
+        display: block !important;
+        width: 100px !important;
+    }
+
+    .people {
+        display: flex !important;
+        flex-flow: row nowrap !important;
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+
+        flex-grow: 1 !important;
+
+        margin: 3px !important;
+        background-color: whitesmoke !important;
+    }
+
+    .people-text {
+        width: 100% !important;
+    }
+</style>
+    
