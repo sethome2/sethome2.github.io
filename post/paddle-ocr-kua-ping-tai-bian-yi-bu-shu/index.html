@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" >
 
-<title>骗分导论 | sethome的橱窗 个人博客</title>
+<title>Paddle OCR 跨平台编译部署 | sethome的橱窗 个人博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -68,11 +68,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-    <meta name="description" content="按照某个OI圈内十分著名的大神(ID:我是智障)写的，把自己常用的给写在里面hhhhh，都是偏向技巧性的东西，集成了大量在OI竞赛中非正解骗分的方法。
-在这里贴上一段顺口溜
-
-骗分过样例，暴力出奇迹。暴搜挂着机，打表出省一。N方过百万，暴力..." />
-    <meta name="keywords" content="algorithm,technique,中文" />
+    <meta name="description" content="出于某种原因，我需要在某平台上打包编译paddleocr的组件，中间踩了很多坑。
+简单在这里总结一下吧。有其他问题可以留言。
+文章末尾我给出已经编译好的文件，有需要自取。
+环境不用多说，CMake和Git必备。GCC建议自备10+，官方推荐..." />
+    <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -176,54 +176,138 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
             <h2 class="post-title">
-              骗分导论
+              Paddle OCR 跨平台编译部署
             </h2>
             <div class="post-date">
-              2022-03-20
+              2022-09-27
             </div>
             
                 <div class="post-content" v-pre>
-                  <p>按照某个OI圈内十分著名的大神(ID:我是智障)写的，把自己常用的给写在里面hhhhh，都是偏向技巧性的东西，集成了大量在OI竞赛中非正解骗分的方法。</p>
-<p>在这里贴上一段顺口溜</p>
-<blockquote>
-<p>骗分过样例，暴力出奇迹。暴搜挂着机，打表出省一。N方过百万，暴力踩标算。肥修赛大象，只是代码短。<br>
-想要骗到分，一定有方法。图论背模板，数论背公式，动规背方程，高精背代码，要是都不会，干脆输样例。</p>
-</blockquote>
-<p>其实我打OI的时候，和圈内接触很少，自己学校也就是个位数的人参加NOIP，对这方面不是很熟，多多包涵。</p>
-<p>其实这些技巧大多只会出现在OI赛制。</p>
-<p>本文章会稳定慢慢更新，欢迎收藏呀。</p>
-<h1 id="骗样例">骗样例</h1>
-<p><strong>遇到样例就输出结果</strong></p>
-<p>也就是顺口溜开头的骗分过样例<br>
-OI赛制可用技巧，部分比赛也行。但是现在开始鸡贼了一个测试点有很多测试数据，只要有一个不过就没有这个测试点的分，麻。</p>
-<h1 id="打表">打表</h1>
-<p><strong>存所有的答案</strong></p>
-<p>不仅限于题目答案，比如说可以把素数的真值表以code的形式存储也算。参见常用的算法技巧文章。没啥可说的，下一个。</p>
+                  <p>出于某种原因，我需要在某平台上打包编译paddleocr的组件，中间踩了很多坑。<br>
+简单在这里总结一下吧。有其他问题可以留言。<br>
+文章末尾我给出已经编译好的文件，有需要自取。</p>
+<p>环境不用多说，CMake和Git必备。GCC建议自备10+，官方推荐8和5，看个人，不使用官方推荐的版本，还是建议全自己编译一下。</p>
+<h1 id="编译opencv">编译openCV</h1>
+<p>首先编译openCV，openCV似乎3和4都可以（不作确定与保证），在官方的readme里面写得很清楚，openCV毕竟是大项目，基本上不会出现问题。<br>
+我用的是官方推荐的3.4.7，似乎4.5.5也能在paddle中使用。<br>
+编译sh如下。</p>
+<pre><code class="language-shell"># 建议使用绝对路径
+root_path=&quot;/xxxxxxx/deployCpp/opencv-3.4.7&quot;
+install_path=${root_path}/opencv3
+build_dir=${root_path}/build
+
+rm -rf ${build_dir}
+mkdir ${build_dir}
+cd ${build_dir}
+
+cmake .. \
+    -DCMAKE_INSTALL_PREFIX=${install_path} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DWITH_IPP=OFF \
+    -DBUILD_IPP_IW=OFF \
+    -DWITH_LAPACK=OFF \
+    -DWITH_EIGEN=OFF \
+    -DCMAKE_INSTALL_LIBDIR=lib64 \
+    -DWITH_ZLIB=ON \
+    -DBUILD_ZLIB=ON \
+    -DWITH_JPEG=ON \
+    -DBUILD_JPEG=ON \
+    -DWITH_PNG=ON \
+    -DBUILD_PNG=ON \
+    -DWITH_TIFF=ON \
+    -DBUILD_TIFF=ON
+
+make -jxx
+make install
+</code></pre>
+<p>接下来没什么好说的，等着滚动条滚动就行，openCV毕竟是国际大项目，没啥问题。</p>
+<p>编译完成后得到build文件，Linux系统接下来的OPENCV_DIR变量指向这个文件夹就行了，Windows参考VS版本，一般为指向build文件夹下的VC15文件夹。</p>
+<h1 id="编译paddlepaddle">编译paddlepaddle</h1>
+<p>clone paddlepaddle仓库，建议直接最新版本梭哈。<br>
+先说说Linux下的编译，在deploy/cpp_infer/tools内有编译脚本，我没用CUDA和CUDNN，纯CPU MKL部署。我是在英特尔CPU下部署的，据说openBLAS对AMD友好，就这样。<br>
+官方的预编译仓库地址：<a href="https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html#linux">https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html#linux</a><br>
+官方的手册：<a href="https://paddleinference.paddlepaddle.org.cn/user_guides/source_compile.html">https://paddleinference.paddlepaddle.org.cn/user_guides/source_compile.html</a><br>
+吐槽一下，现在越来越喜欢docker了，编译怎么也用docker。</p>
+<pre><code class="language-shell">rm -rf build
+mkdir build
+cd build
+
+# 注意需要修改ulimit -n nofile属性
+# 在高版本ubuntu不起作用，需要手动修改/etc/systemd/system.conf
+# /etc/systemd/user.conf,添加 DefaultLimitNOFILE=65535
+# 在 /etc/security/limits.conf 添加以下两行
+# hard nofile 65535
+# soft nofile 65535
+ulimit -n 4096
+
+cmake  .. \
+    -DWITH_CONTRIB=OFF \
+    -DWITH_MKL=ON \
+    -DWITH_MKLDNN=ON  \
+    -DWITH_TESTING=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_INFERENCE_API_TEST=OFF \
+    -DON_INFER=ON \
+    -DWITH_PYTHON=ON
+
+# 可在此手动修改，针对高版本GCC
+# 在thr_party/protobuf 中的报错，将函数修改为const类型
+# paddle自己的报错，取消迭代器为const的限制
+# 再手动make clean
+# make -jx 即可
+
+make -j48
+make inference_lib_dist
+</code></pre>
+<p>等等，先别着急跑，有坑，paddle亲自给你挖的。<br>
+paddle里面所有的编译优化参数-O （IO戏称氧气）全部写成了小写-o3，-o其实是重命名的代码，于是乎会导致Cmake找不到。</p>
+<pre><code class="language-shell">nano CMakeList.txt 
+</code></pre>
+<p>把所有的-o3都改成-O3，就没问题了。</p>
+<p>paddle本体编译一般不会出现什么问题，Windows有官方的预编译包，直接下就好了，别折腾了。如果要折腾也一样，Windows有好用的CMake GUI，参数一填，也一样。Windows建议使用VS编译。</p>
+<h1 id="编译paddleocr-cpp_infer">编译paddleOCR cpp_infer</h1>
+<p>OK，现在我们有paddle本体和openCV了，开始编译paddleOCR里面的cpp_infer吧。<br>
+主要讲讲Linux，Windows有非常详细的官方教程，都别忘了改CMakeList.txt里面的-o3。<br>
+Windows 参考链接：<a href="https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.6/deploy/cpp_infer/docs/windows_vs2019_build.md">https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.6/deploy/cpp_infer/docs/windows_vs2019_build.md</a><br>
+Windows 没啥坑可以踩，别忘了拷贝DLL哦。</p>
+<p>Linux编译脚本如下</p>
+<pre><code class="language-shell">OPENCV_DIR=&quot;/xxxx/deployCpp/opencv-3.4.7/opencv3&quot;
+LIB_DIR=&quot;/xxxx/deployCpp/paddlepaddle/Paddle/build&quot;
+paddle_inference_install_dir
+CUDA_LIB_DIR=your_cuda_lib_dir
+CUDNN_LIB_DIR=your_cudnn_lib_dir
+
+BUILD_DIR=build
+rm -rf ${BUILD_DIR}
+mkdir ${BUILD_DIR}
+cd ${BUILD_DIR}
+cmake .. \
+    -DPADDLE_LIB=${LIB_DIR} \
+    -DWITH_MKL=ON \
+    -DWITH_GPU=OFF \
+    -DWITH_STATIC_LIB=OFF \
+    -DWITH_TENSORRT=OFF \
+    -DOPENCV_DIR=${OPENCV_DIR} \
+    -DCUDNN_LIB=${CUDNN_LIB_DIR} \
+    -DCUDA_LIB=${CUDA_LIB_DIR} \
+    -DTENSORRT_DIR=${TENSORRT_DIR} \
+
+make -jxx
+</code></pre>
+<p>到此，编译结束了。可以看到build文件夹内生成的ppocr文件。Windows拷贝DLL就可以运行，Linux似乎包含了所有内容（仅限于完全自己编译），使用官方预编译似乎不行，需要手动拷贝一些.so文件。</p>
+<p>文件下载列表：<br>
+（懒得加，有时间先）</p>
+<p>洗出结果的正则：（适合摆烂用，到时候一起补全）</p>
 
                 </div>
                 
-                  <div class="tag-container">
-                    
-                      <a href="https://sethome2.github.io/tag/AxMbzInct/" class="tag">
-                        algorithm
-                      </a>
-                      
-                      <a href="https://sethome2.github.io/tag/DPgomazXOf/" class="tag">
-                        technique
-                      </a>
-                      
-                      <a href="https://sethome2.github.io/tag/orC5ANx2z/" class="tag">
-                        中文
-                      </a>
-                      
-                  </div>
-                  
                     
                       <div class="next-post">
                         <div class="next">下一篇</div>
-                        <a href="https://sethome2.github.io/post/shen-ye-ji-chang/">
+                        <a href="https://sethome2.github.io/post/di-shi-san-jie-lan-qiao-bei-cc-b-zu-ge-ren-bi-sai-ti-jiao-dai-ma-bai-lan-bei/">
                           <h3 class="post-title">
-                            深夜机场
+                            第十三届蓝桥杯C/C++ B组个人比赛提交代码（摆烂杯
                           </h3>
                         </a>
                       </div>
