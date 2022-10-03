@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1664472968100">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1664819100939">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1664472968100" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1664819100939" class="site-logo">
         <h1 class="site-title">sethome的橱窗 个人博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -229,7 +229,10 @@ make install
 官方的预编译仓库地址：<a href="https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html#linux">https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html#linux</a><br>
 官方的手册：<a href="https://paddleinference.paddlepaddle.org.cn/user_guides/source_compile.html">https://paddleinference.paddlepaddle.org.cn/user_guides/source_compile.html</a><br>
 吐槽一下，现在越来越喜欢docker了，编译怎么也用docker。</p>
-<pre><code class="language-shell">rm -rf build
+<pre><code class="language-shell">sudo apt-get install gcc g++ make cmake git vim unrar python3 python3-dev python3-pip swig wget patchelf libopencv-dev
+pip3 install numpy protobuf wheel setuptools
+
+rm -rf build
 mkdir build
 cd build
 

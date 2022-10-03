@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗 个人博客</title>
-    <updated>2022-09-29T17:36:31.543Z</updated>
+    <updated>2022-10-03T17:45:54.666Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -62,7 +62,10 @@ make install
 官方的预编译仓库地址：<a href="https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html#linux">https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html#linux</a><br>
 官方的手册：<a href="https://paddleinference.paddlepaddle.org.cn/user_guides/source_compile.html">https://paddleinference.paddlepaddle.org.cn/user_guides/source_compile.html</a><br>
 吐槽一下，现在越来越喜欢docker了，编译怎么也用docker。</p>
-<pre><code class="language-shell">rm -rf build
+<pre><code class="language-shell">sudo apt-get install gcc g++ make cmake git vim unrar python3 python3-dev python3-pip swig wget patchelf libopencv-dev
+pip3 install numpy protobuf wheel setuptools
+
+rm -rf build
 mkdir build
 cd build
 
