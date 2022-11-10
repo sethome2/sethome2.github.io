@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗 个人博客</title>
-    <updated>2022-10-03T17:45:54.666Z</updated>
+    <updated>2022-11-10T09:10:11.134Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -664,6 +664,11 @@ void produce()
 <a href="https://blog.sethome.cc/algorithmFiles/prime.txt">素数打表文件</a></p>
 <p>利用小费马定理的玄学素数筛（因为太玄学又不大用得到就删去了，知道有这个东西就行）</p>
 <pre><code class="language-c++">
+</code></pre>
+<p>关闭C++的cout cin刷新与绑定，加快读取读入速度</p>
+<pre><code class="language-c++">std::ios::sync_with_stdio(false);
+std::cin.tie(0); 
+std::cout.tie(0);
 </code></pre>
 ]]></content>
     </entry>
