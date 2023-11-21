@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" >
+
+<title>晶体培养手册 | sethome的橱窗 个人博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1700585887568">
+<link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGN093XZS4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GGN093XZS4');
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?962ffd213ed43ff588cf9a794c723d58";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P786JZL');
+</script>
+<!-- End Google Tag Manager -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGN093XZS4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GGN093XZS4');
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+
+
+    <meta name="description" content="我其实从初中就开始想要培养晶体了，这个可能会动态更新一下。
+图多杀猫！
+我正式的开始学习化学则是从初中开始的，初中也是我化学最好的时候，后面上了高中感觉化学突然就变了样子，很多理论都是局限在一个圈子里面，后面就放弃化学了。
+除了考试，化学还..." />
+    <meta name="keywords" content="化学,technique,中文" />
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P786JZL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <div id="app" class="main">
+
+    <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://sethome2.github.io">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1700585887568" class="site-logo">
+        <h1 class="site-title">sethome的橱窗 个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://sethome2.github.io" class="site-nav">
+            首页 / Home
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/tag/VvCd9lSL-/" class="site-nav">
+            奇怪的项目 / Project
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/tag/T7U4S5FR5/" class="site-nav">
+            照片 / Picture
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/tags" class="site-nav">
+            文章标签 / Article Tags
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/archives" class="site-nav">
+            文章列表 / Article List
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/post/about" class="site-nav">
+            关于 / About
+          </a>
+        
+      
+        
+          <a href="https://sethome2.github.io/post/you-qing-lian-jie" class="site-nav" target="_blank">
+            友情链接 / ExchangeLink
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/sethome2" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      sethome的橱窗 个人博客
+    </div>
+    <div class="site-footer">
+      <p>除另有声明外，图片不得商用，商业电邮</p>
+<p>文章转载与引用请附上链接</p>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<div target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45012202000129" style="color:#dee2e6;"><a>桂公网安备 45012202000129号</a></div><p></p>
+<a href="http://www.beian.miit.gov.cn/" style="color:#dee2e6;"> 桂ICP备2022001235号-1</a><p></p> | <a class="rss" href="https://sethome2.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">
+              晶体培养手册
+            </h2>
+            <div class="post-date">
+              2023-11-21
+            </div>
+            
+                <div class="post-content" v-pre>
+                  <p>我其实从初中就开始想要培养晶体了，这个可能会动态更新一下。</p>
+<p>图多杀猫！</p>
+<p>我正式的开始学习化学则是从初中开始的，初中也是我化学最好的时候，后面上了高中感觉化学突然就变了样子，很多理论都是局限在一个圈子里面，后面就放弃化学了。<br>
+除了考试，化学还是挺有趣的。</p>
+<p>下面都会给出自己的方法和见解，建议看完所有步骤再行动。</p>
+<h1 id="硫酸铜晶体">硫酸铜晶体</h1>
+<p>化学式：不是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>u</mi><mi>S</mi><msub><mi>O</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">CuSO_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 而是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>u</mi><mi>S</mi><msub><mi>O</mi><mn>4</mn></msub><mo separator="true">⋅</mo><mn>5</mn><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi></mrow><annotation encoding="application/x-tex">CuSO_4·5H_2O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span></span></span></span>（五水硫酸铜）<br>
+常见的似乎只有五水硫酸铜结构，晶胞结构有点复杂，还是看图吧。而且还有无水硫酸铜，呈现白色，加热到102℃失去两个结晶水；113℃失去三个结晶水；258℃失去全部结晶水；当加热温度达653℃时，开始分解生成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>u</mi><mi>O</mi></mrow><annotation encoding="application/x-tex">CuO</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><msub><mi>O</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">SO_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，在720℃时分解结束。</p>
+<p>晶胞结构如下图，来源Wikipedia：<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Copper%28II%29-sulfate-unit-cell-3D-balls.png/300px-Copper%28II%29-sulfate-unit-cell-3D-balls.png" alt="五水硫酸铜晶胞结构" loading="lazy"><br>
+步骤：</p>
+<ol>
+<li>
+<p>准备五水硫酸铜试剂，纯水，烧杯，玻璃棒，一个小称，酒精灯或者水浴加热（可选）。<br>
+稍微解释一下为什么准备这些东西，纯水是为了防止有杂质在水中，影响结晶的过程，不介意用白开水我估计也行。没有纯水或者家里没有反渗透净水器的，可以购买哇哈哈或者屈臣氏蒸馏水替代（有点用力过猛）。加热硫酸铜溶液可以溶解更多的硫酸铜。在温度下降时，就会变成饱和溶液，从而结晶。</p>
+</li>
+<li>
+<p>配置硫酸铜的饱和溶液，不停用玻璃杯搅拌直到全部溶解为止。如果有50ML水，加入至少15g的硫酸铜。如果选择后续加热溶液，则建议加入30g以上的五水硫酸铜。<br>
+硫酸铜可以溶解31.6 g/100 ml在0度的水中，而在100度的水中，我暂时还没去查阅详细的资料，但是溶解100g/100 ml应该是没问题的。<br>
+（图为氯化钠的）<br>
+<img src="https://sethome2.github.io/post-images/1700585801683.JPG" alt="称量晶体" loading="lazy"></p>
+</li>
+<li>
+<p>可选步骤，加热，加热可以溶解更多硫酸铜，还可以显著加速实验过程，基本上一天搞定。</p>
+</li>
+<li>
+<p>静置，找一个没有晃动的地方，将烧杯盖好，静静等待就行。</p>
+</li>
+</ol>
+<p>有需要可以从里面找到一个比较完美的，作为结晶核再次培养。</p>
+<p>成品：</p>
+<h1 id="氯化钠晶体">氯化钠晶体</h1>
+<p>化学式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>a</mi><mi>C</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">NaCl</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span><br>
+步骤基本和硫酸铜一样，养出来就是一个四方的晶体，很好看，里面有点模糊，外面透明，缺点是养不大。</p>
+<p>重要的事情说在前面：<br>
+氯化钠溶解度：36.0 g/100ml (25 °C)。其受温度的影响不大，加热可以轻微溶解一部分，一定要有耐心。<br>
+据说可以在培养的时候加入一点谷氨酸（味精）,使其看起来更透明。我就没有加，但是感觉还行。</p>
+<p>晶胞结构如下图，来源Wikipedia：<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/NaCl-estructura_cristalina.svg/240px-NaCl-estructura_cristalina.svg.png" alt="氯化钠晶体结构" loading="lazy"></p>
+
+                </div>
+                
+                  <div class="tag-container">
+                    
+                      <a href="https://sethome2.github.io/tag/gW8HzMcZF/" class="tag">
+                        化学
+                      </a>
+                      
+                      <a href="https://sethome2.github.io/tag/DPgomazXOf/" class="tag">
+                        technique
+                      </a>
+                      
+                      <a href="https://sethome2.github.io/tag/orC5ANx2z/" class="tag">
+                        中文
+                      </a>
+                      
+                  </div>
+                  
+                    
+                      <div class="next-post">
+                        <div class="next">下一篇</div>
+                        <a href="https://sethome2.github.io/post/paddle-ocr-kua-ping-tai-bian-yi-bu-shu/">
+                          <h3 class="post-title">
+                            Paddle OCR 跨平台编译部署
+                          </h3>
+                        </a>
+                      </div>
+                      
+
+                        
+                          
+                            <div id="gitalk-container" data-aos="fade-in"></div>
+                            
+
+                              
+                                  
+
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a66037dc805d2519c1e3',
+        clientSecret: '77cbde8229074e52566ea21d48e65a0e3f4e542c',
+        repo: 'comment-website',
+        owner: 'sethome2',
+        admin: ['sethome2'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+</body>
+
+</html>
