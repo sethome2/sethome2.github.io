@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗 个人博客</title>
-    <updated>2023-11-21T16:59:57.080Z</updated>
+    <updated>2023-11-21T17:15:38.450Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -20,17 +20,18 @@
 <p>图多杀猫！</p>
 <p>我正式的开始学习化学则是从初中开始的，初中也是我化学最好的时候，后面上了高中感觉化学突然就变了样子，很多理论都是局限在一个圈子里面，后面就放弃化学了。<br>
 除了考试，化学还是挺有趣的。</p>
-<p>下面都会给出自己的方法和见解，建议看完所有步骤再行动。</p>
+<p>下面都会给出自己的方法和见解，建议看完所有步骤再行动。<br>
+记得部分晶体防潮解。</p>
 <h1 id="硫酸铜晶体">硫酸铜晶体</h1>
 <p>化学式：不是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>u</mi><mi>S</mi><msub><mi>O</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">CuSO_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 而是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>u</mi><mi>S</mi><msub><mi>O</mi><mn>4</mn></msub><mo separator="true">⋅</mo><mn>5</mn><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi></mrow><annotation encoding="application/x-tex">CuSO_4·5H_2O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span></span></span></span>（五水硫酸铜）<br>
 常见的似乎只有五水硫酸铜结构，晶胞结构有点复杂，还是看图吧。而且还有无水硫酸铜，呈现白色，加热到102℃失去两个结晶水；113℃失去三个结晶水；258℃失去全部结晶水；当加热温度达653℃时，开始分解生成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>u</mi><mi>O</mi></mrow><annotation encoding="application/x-tex">CuO</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><msub><mi>O</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">SO_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，在720℃时分解结束。</p>
-<p>晶胞结构如下图，来源Wikipedia：<br>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Copper%28II%29-sulfate-unit-cell-3D-balls.png/300px-Copper%28II%29-sulfate-unit-cell-3D-balls.png" alt="五水硫酸铜晶胞结构" loading="lazy"><br>
-步骤：</p>
+<p>晶胞结构如下图，来源<a href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Copper%28II%29-sulfate-unit-cell-3D-balls.png/300px-Copper%28II%29-sulfate-unit-cell-3D-balls.png">Wikipedia</a><br>
+<img src="https://sethome2.github.io/post-images/1700586869077.jpg" alt="硫酸铜晶胞结构" loading="lazy"></p>
+<p>步骤：</p>
 <ol>
 <li>
 <p>准备五水硫酸铜试剂，纯水，烧杯，玻璃棒，一个小称，酒精灯或者水浴加热（可选）。<br>
-稍微解释一下为什么准备这些东西，纯水是为了防止有杂质在水中，影响结晶的过程，不介意用白开水我估计也行。没有纯水或者家里没有反渗透净水器的，可以购买哇哈哈或者屈臣氏蒸馏水替代（有点用力过猛）。加热硫酸铜溶液可以溶解更多的硫酸铜。在温度下降时，就会变成饱和溶液，从而结晶。</p>
+稍微解释一下为什么准备这些东西，纯水是为了防止有杂质在水中，影响结晶的过程，不介意用白开水我估计也行。没有纯水或者家里没有反渗透净水器的，可以购买哇哈哈或者屈臣氏蒸馏水替代（有点用力过猛），就我个人是让舍友从实验室打了超纯水回来。加热硫酸铜溶液可以溶解更多的硫酸铜。在温度下降时，就会变成饱和溶液，从而结晶。</p>
 </li>
 <li>
 <p>配置硫酸铜的饱和溶液，不停用玻璃杯搅拌直到全部溶解为止。如果有50ML水，加入至少15g的硫酸铜。如果选择后续加热溶液，则建议加入30g以上的五水硫酸铜。<br>
@@ -42,19 +43,27 @@
 <p>可选步骤，加热，加热可以溶解更多硫酸铜，还可以显著加速实验过程，基本上一天搞定。</p>
 </li>
 <li>
-<p>静置，找一个没有晃动的地方，将烧杯盖好，静静等待就行。</p>
+<p>静置，找一个没有晃动的地方，将烧杯盖好，静静等待就行。<br>
+<img src="https://sethome2.github.io/post-images/1700586490673.JPG" alt="静置饱和溶液" loading="lazy">]</p>
 </li>
 </ol>
-<p>有需要可以从里面找到一个比较完美的，作为结晶核再次培养。</p>
-<p>成品：</p>
+<p>有需要可以从里面找到一个比较完美的，作为结晶核再次培养。一般第一次都养不大。<br>
+<img src="https://sethome2.github.io/post-images/1700586532827.JPG" alt="硫酸铜结晶" loading="lazy"></p>
+<p>成品：（不如其他大佬的好，但是还挺透明的）<br>
+<img src="https://sethome2.github.io/post-images/1700586554430.JPG" alt="硫酸铜结晶" loading="lazy"></p>
 <h1 id="氯化钠晶体">氯化钠晶体</h1>
 <p>化学式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>a</mi><mi>C</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">NaCl</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span><br>
 步骤基本和硫酸铜一样，养出来就是一个四方的晶体，很好看，里面有点模糊，外面透明，缺点是养不大。</p>
 <p>重要的事情说在前面：<br>
 氯化钠溶解度：36.0 g/100ml (25 °C)。其受温度的影响不大，加热可以轻微溶解一部分，一定要有耐心。<br>
 据说可以在培养的时候加入一点谷氨酸（味精）,使其看起来更透明。我就没有加，但是感觉还行。</p>
-<p>晶胞结构如下图，来源Wikipedia：<br>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/NaCl-estructura_cristalina.svg/240px-NaCl-estructura_cristalina.svg.png" alt="氯化钠晶体结构" loading="lazy"></p>
+<p>晶胞结构如下图，来源<a href="(https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/NaCl-estructura_cristalina.svg/240px-NaCl-estructura_cristalina.svg.png)">Wikipedia</a>：<br>
+<img src="https://sethome2.github.io/post-images/1700586907735.jpg" alt="氯化钠晶体结构" loading="lazy"></p>
+<p>培养4天左右就开始生成奇怪的东西了。<br>
+<img src="https://sethome2.github.io/post-images/1700586641725.JPG" alt="培养氯化钠晶体中间的样子" loading="lazy"></p>
+<p>部分成品：有点像明日方舟的转置结晶？！<br>
+<img src="https://sethome2.github.io/post-images/1700586673937.JPG" alt="氯化钠晶体" loading="lazy"><br>
+<img src="https://sethome2.github.io/post-images/1700586676704.JPG" alt="氯化钠晶体" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
