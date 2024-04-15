@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗 个人博客</title>
-    <updated>2024-01-16T08:33:21.409Z</updated>
+    <updated>2024-04-15T10:54:58.756Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -10,6 +10,293 @@
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2024, sethome的橱窗 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[ASC24 OpenCAEPoro 团队&个人优化方案]]></title>
+        <id>https://sethome2.github.io/post/asc24-opencaeporo-ge-ren-andtuan-dui-you-hua-fang-an/</id>
+        <link href="https://sethome2.github.io/post/asc24-opencaeporo-ge-ren-andtuan-dui-you-hua-fang-an/">
+        </link>
+        <updated>2024-04-13T16:30:12.000Z</updated>
+        <content type="html"><![CDATA[<p>本文写于ASC24结束后一天，可能存在诸多错误，能力有限。同时这是我第一次接触MPI程序和HPC，还请谅解，之前都是搞Robotic和嵌入式的，跨行作战感觉非常生疏，非常欢迎大家指出错误斧正。</p>
+<blockquote>
+<p>Hi，此外我有幸作为打杂&amp;后勤队员，能参加这个比赛倍感荣幸，我还在寻找RA，PhD或者其他工作机会，希望聚焦于控制，航空航天，机器人学，如果您愿意向我伸出橄榄枝，我感激不尽。</p>
+</blockquote>
+<p>OpenCAEPoro的背景我想不需要赘述。开门见山的说，大家都发现了dgemm函数是一个热点，如果优化了这个函数，加速效果会非常明显，这也是我们所优化的地方。同时CAE对左右邻居查找的算法非常极其特别低下，基本上都是O(N)或O(N^2)的时间复杂度，这也是我们所优化的重点之一。最后PetSc有非常多可以优化调节的点，通过优化内存访问，decoup函数优化，我们可以达到更快的速度。同时合理利用异步计算，可以使程序同时榨干CPU运算性能和远端访问性能。</p>
+<p>接下来，我给出我们在决赛中的成绩作为参考，后续我会将初赛提交的文件上传到Github：<br>
+<img src="https://sethome2.github.io/post-images/1713172673923.JPG" alt="OpenCAEPoro成绩单" loading="lazy"><br>
+以下是初赛的加速比：<br>
+<img src="https://sethome2.github.io/post-images/1713174821342.png" alt="初赛加速比" loading="lazy"></p>
+<hr>
+<h1 id="dgemm算法">dgemm算法</h1>
+<p>首先是dgemm算法，ASC非官方交流群有大佬给出了应该是更优解，是Intel黑科技，我不敢说我的代码更快，直达连接：<a href="https://www.intel.com/content/www/us/en/developer/articles/technical/onemkl-improved-small-matrix-performance-using-just-in-time-jit-code.html">https://www.intel.com/content/www/us/en/developer/articles/technical/onemkl-improved-small-matrix-performance-using-just-in-time-jit-code.html</a>。相比之下我们的利用block缓存和cpp temple编译期间计算的方法就显得有些无力。这里可能会有人好奇，为什么不使用MKL的dgemm算法呢？经过我们的测试，发现MKL在对小矩阵中性能不佳，CAE中testcase1所计算的矩阵是相当小的，20x20以内（比赛中的case不得而知）。同时，我还给出我们参考的代码，是来自于英伟达工程师的小教程，简直就是HPC入门最好的指南：<a href="https://github.com/yzhaiustc/Optimizing-DGEMM-on-Intel-CPUs-with-AVX512F">https://github.com/yzhaiustc/Optimizing-DGEMM-on-Intel-CPUs-with-AVX512F</a><br>
+在我们的这份代码，小矩阵乘法相比作者的原版，能提供约30%的性能提升（因为部分缩放操作不会被编译）。</p>
+<pre><code class="language-cpp">#define A(i, j) A[(i) * LDA + (j)]
+#define B(i, j) B[(i) * LDB + (j)]
+#define C(i, j) C[(i) * LDC + (j)]
+#include &quot;immintrin.h&quot;
+#include &lt;stdint.h&gt;
+#include &lt;cstring&gt;
+
+void scale_c_k4(double *C, int M, int N, int LDC, double scalar)
+{
+    int i, j;
+    for (i = 0; i &lt; M; i++)
+    {
+        for (j = 0; j &lt; N; j++)
+        {
+            C(i, j) *= scalar;
+        }
+    }
+}
+
+void mydgemm_cpu_opt_k4(int M, int N, int K, double alpha, double *A, int LDA, double *B, int LDB, double beta, double *C, int LDC)
+{
+    int i, j, k;
+    if (beta != 1.0)
+        scale_c_k4(C, M, N, LDC, beta);
+    for (i = 0; i &lt; M; i++)
+    {
+        for (j = 0; j &lt; N; j++)
+        {
+            double tmp = C(i, j);
+            for (k = 0; k &lt; K; k++)
+            {
+                tmp += alpha * A(i, k) * B(k, j);
+            }
+            C(i, j) = tmp;
+        }
+    }
+}
+
+template &lt;typename BETA, typename ALPHA&gt;
+void mydgemm_cpu_v4(int M, int N, int K, ALPHA alpha, double *A, int LDA, double *B, int LDB, BETA beta, double *C, int LDC)
+{
+    int i, j, k;
+    if constexpr (beta == 0) // optimize for beta == 0
+        memset(C, 0, sizeof(double) * M * N);
+    else
+    {
+        if constexpr (beta != 1.0)
+            scale_c_k4(C, M, N, LDC, beta);
+    }
+
+    int M4 = M &amp; -4, N4 = N &amp; -4;
+    for (i = 0; i &lt; M4; i += 4)
+    {
+        for (j = 0; j &lt; N4; j += 4)
+        {
+            double c00 = C(i, j);
+            double c01 = C(i, j + 1);
+            double c02 = C(i, j + 2);
+            double c03 = C(i, j + 3);
+            double c10 = C(i + 1, j);
+            double c11 = C(i + 1, j + 1);
+            double c12 = C(i + 1, j + 2);
+            double c13 = C(i + 1, j + 3);
+            double c20 = C(i + 2, j);
+            double c21 = C(i + 2, j + 1);
+            double c22 = C(i + 2, j + 2);
+            double c23 = C(i + 2, j + 3);
+            double c30 = C(i + 3, j);
+            double c31 = C(i + 3, j + 1);
+            double c32 = C(i + 3, j + 2);
+            double c33 = C(i + 3, j + 3);
+            for (k = 0; k &lt; K; k++)
+            {
+                double a0, a1, a2, a3;
+                if constexpr (alpha != 1.0)
+                {
+                    a0 = alpha * A(i, k);
+                    a1 = alpha * A(i + 1, k);
+                    a2 = alpha * A(i + 2, k);
+                    a3 = alpha * A(i + 3, k);
+                }
+                else
+                {
+                    a0 = A(i, k);
+                    a1 = A(i + 1, k);
+                    a2 = A(i + 2, k);
+                    a3 = A(i + 3, k);
+                }
+
+                double b0 = B(k, j);
+                double b1 = B(k, j + 1);
+                double b2 = B(k, j + 2);
+                double b3 = B(k, j + 3);
+                c00 += a0 * b0;
+                c01 += a0 * b1;
+                c02 += a0 * b2;
+                c03 += a0 * b3;
+                c10 += a1 * b0;
+                c11 += a1 * b1;
+                c12 += a1 * b2;
+                c13 += a1 * b3;
+                c20 += a2 * b0;
+                c21 += a2 * b1;
+                c22 += a2 * b2;
+                c23 += a2 * b3;
+                c30 += a3 * b0;
+                c31 += a3 * b1;
+                c32 += a3 * b2;
+                c33 += a3 * b3;
+            }
+            C(i, j) = c00;
+            C(i, j + 1) = c01;
+            C(i, j + 2) = c02;
+            C(i, j + 3) = c03;
+            C(i + 1, j) = c10;
+            C(i + 1, j + 1) = c11;
+            C(i + 1, j + 2) = c12;
+            C(i + 1, j + 3) = c13;
+            C(i + 2, j) = c20;
+            C(i + 2, j + 1) = c21;
+            C(i + 2, j + 2) = c22;
+            C(i + 2, j + 3) = c23;
+            C(i + 3, j) = c30;
+            C(i + 3, j + 1) = c31;
+            C(i + 3, j + 2) = c32;
+            C(i + 3, j + 3) = c33;
+        }
+    }
+    if (M4 == M &amp;&amp; N4 == N)
+        return;
+    // boundary conditions
+    if (M4 != M)
+        mydgemm_cpu_opt_k4(M - M4, N, K, alpha, A + M4, LDA, B, LDB, 1.0, &amp;C(M4, 0), LDC);
+    if (N4 != N)
+        mydgemm_cpu_opt_k4(M4, N - N4, K, alpha, A, LDA, &amp;B(0, N4), LDB, 1.0, &amp;C(0, N4), LDC);
+}
+
+</code></pre>
+<h1 id="查找左右邻接组分的优化">查找左右邻接组分的优化</h1>
+<p>哎呀，接下来其实Vtune Profile就很难给出什么有用的信息了，好在程序代码不多，我们可以从最花费时间的地方优化起。Partion部分，我们一眼人肉顶针出了OpenCAEPoro作者奇怪的地方，不同组分直接的连接（可能是，OpenCAEPoro作者 董理大佬看到了还请解惑）是通过***遍历数组***实现的。这就导致查找左右孩子（不同组分的连接），在2x2x2的组分中，就有可能有24个链接，获得连接信息就要跑24次。有没有可能用哈希表啊？来自O(1)时间算法的自信。<br>
+然后，我们两位负责这个赛题的人，对着源代码肉眼检查了两周，终于发现可以简易优化的地方，位于Partition.cpp文件中的SetDistribution函数，以下仅为代码摘要，能这样修改的一共有两处，在这个部分，性能提高了7倍。</p>
+<pre><code class="language-cpp">/// Get elements and their neighbors belonging to current process,
+	/// Also, process of them are needed.
+	/// Setup elements those will be sent to corresponding process
+	//  target process, num of elements, num of edges, global index of elements, xadj, adjncy, adjproc
+	vector&lt;vector&lt;idx_t&gt;&gt;  send_buffer;
+	vector&lt;vector&lt;idx_t&gt;&gt;&amp; recv_buffer = elementCSR;
+	recv_buffer.push_back(vector&lt;idx_t&gt; {myrank, 0, 0});
+
+	//cdr
+	unordered_map&lt;idx_t, idx_t&gt; ump_send_buffer;
+
+	// Calculate necessary memory first
+	for (idx_t i = 0; i &lt; numElementLocal; i++) {
+		if (part[i] == myrank) {
+			recv_buffer[0][1] ++;
+			recv_buffer[0][2] += (xadj[i + 1] - xadj[i]);
+		}
+		else {
+			//cdr
+			if(ump_send_buffer[part[i]]){
+				idx_t k = ump_send_buffer[part[i]] - 1;
+				send_buffer[k][1] ++;
+				send_buffer[k][2] += (xadj[i + 1] - xadj[i]);
+			}
+			else{
+				send_buffer.push_back(vector&lt;idx_t&gt;{part[i], 1, xadj[i + 1] - xadj[i]});
+				ump_send_buffer[part[i]] = send_buffer.size();
+			}
+
+			// idx_t k;
+			// for (k = 0; k &lt; send_buffer.size(); k++) {
+			// 	if (part[i] == send_buffer[k][0]) {
+			// 		// existing process
+			// 		send_buffer[k][1] ++;
+			// 		send_buffer[k][2] += (xadj[i + 1] - xadj[i]);
+			// 		break;
+			// 	}
+			// }
+			// if (k == send_buffer.size()) {
+			// 	// new process
+			// 	send_buffer.push_back(vector&lt;idx_t&gt;{part[i], 1, xadj[i + 1] - xadj[i]});
+			// }
+		}
+	}
+</code></pre>
+<h1 id="在petsc-linersovler的优化">在PetSc LinerSovler的优化</h1>
+<p>重写decoup函数是我们首先应用的优化，这是其中的一个子函数，先把重复释放的内存操作给修改了，改为静态内存，避免反复申请释放对内存池的压力，同时申请对其的内存，提高访问效率。</p>
+<pre><code class="language-cpp">void inverse1(double *A, int N)
+{
+    static int *IPIV = static_cast&lt;int *&gt;(aligned_alloc(64, N * sizeof(int)));
+    int LWORK = N * N;
+    static int last_N = N;
+    static double *WORK = static_cast&lt;double *&gt;(aligned_alloc(64, LWORK * sizeof(double)));
+    int INFO;
+
+    if (last_N &lt; N)
+    {
+        last_N = N;
+
+        std::free(IPIV);
+        std::free(WORK);
+
+        IPIV = static_cast&lt;int *&gt;(aligned_alloc(64, N * sizeof(int)));
+        WORK = static_cast&lt;double *&gt;(aligned_alloc(64, LWORK * sizeof(double)));
+    }
+
+    dgetrf_(&amp;N, &amp;N, A, &amp;N, IPIV, &amp;INFO);
+
+    if (INFO &gt; 0)
+    {
+        printf(&quot;WARNING: The factorization has been completed, but the factor U is exactly singular&quot;);
+    }
+    else if (INFO &lt; 0)
+    {
+        printf(&quot;WARNING: There is an illegal value&quot;);
+    }
+
+    dgetri_(&amp;N, A, &amp;N, IPIV, WORK, &amp;LWORK, &amp;INFO);
+}
+</code></pre>
+<p>然后，我们想到同样的操作也也可以用在整个LS求解函数中，从微小的args，到相对较大的nNDCount等变量开始改起，这些操作约可以带来了10%的Object Time提升。在查阅文档的时候，还意外发现PetSc自己实现了一个内存池的操作，这个又可以带来10%的性能提升。<br>
+<img src="https://sethome2.github.io/post-images/1713175347615.png" alt="PetSc内存操作" loading="lazy"></p>
+<p>在查阅PetSc文档后，确定了Mat, Vector, Ksp等PetSc变量可以被重复利用的前提下，我们将其改变为静态类型变量，企图得到进一步的性能提升，但是可惜的是并没有观察到有效的变化，估计是编译器做了一些神奇的优化掩盖掉了。</p>
+<p>在求解函数中，还可以发现存在<code>MatAssemblyBegin</code>和<code>MatAssemblyBegin</code>的函数，这些字眼有效暗示了我们这个是异步操作函数，查阅PetSc文档后得到了肯定。我们在其中塞入了一些计算过程，但是Object Time也没有肉眼可以观察到的变化，或许case太小了没法体现出来。同样，我们复用了这一思想，在结果拷贝的过程中使用C++ 20 feature特性，异步拷贝了数据（但这不在Object time内，只是为了比赛求解更快）。</p>
+<p>接下来我要介绍一些我们失败的优化，尝试过更改矩阵搜引，矩阵类型，修改预求解器的方法，加速LS求解过程，亦或者使用Cuda加速线性求解过程（即使它并不在Object Time其中，但是在比赛时可以有效减少题目运行时间），都因为没有明显的性能提升或者求解错误而作罢。在这里面，我们花费了超过一半以上的备赛时间，却很遗憾没有收获。</p>
+<h1 id="修改汇总时的文件读写io">修改汇总时的文件读写IO</h1>
+<p><strong>重点：我这个实现的代码有Bug，思路没问题，但是最后主线程输出改炸了，会导致SUMMAY.out文件输出到虚空里面。这个修改是我自己完成的，在比赛时才发现，我本人难逃其咎，已经向队友祈求原谅了，很遗憾因为这个错误，导致几乎所有的case在决赛时都跑了两次，在此处公开道歉了QAQ。我战犯我该死○|￣|_</strong></p>
+<p>在OpenCAEPoro中，汇总结果阶段会向磁盘中写入<code>SUMMAY_proc_xxx</code>和<code>Fast_proc_xxx</code>文件，再由主线程读取，整理出最终的数据，这样会导致可拓展性不高，对于上百核的并行，可能会造成性能损失，在研读代码后，我决定修改这一部分，不写入磁盘而通过MPI通讯汇总数据，最终得到10%的性能提升（线程越多性能提升越高，上千线程估计能跑到几百倍？）。</p>
+<p>原来的过程像是这样：<br>
+<img src="https://sethome2.github.io/post-images/1713177578180.png" alt="原版汇总方法" loading="lazy"></p>
+<p>我改成每个线程都发送给主线程（先发送长度，在发送内容），初次编写MPI不太会，应该用Gather方法会比较合适。<br>
+<img src="https://sethome2.github.io/post-images/1713177662038.png" alt="新版汇总方法" loading="lazy"></p>
+<p>因为改炸了，实在不想说什么，居然能犯下这种错误，就说到这里吧。</p>
+<h1 id="其他七七八八的小优化">其他七七八八的小优化</h1>
+<p>接下来的优化就开始玄学了，来自OI选手的快乐。</p>
+<ol>
+<li>输入输出加速<br>
+取消掉与C语言库输入输出的同步，可以使得输入输出流达到Printf的水平（当然还有更快的）：</li>
+</ol>
+<pre><code class="language-cpp">std::ios::sync_with_stdio(false);
+std::cin.tie(0); 
+std::cout.tie(0);
+</code></pre>
+<ol start="2">
+<li>
+<p>给reserve提前分配空间<br>
+代码中，不喜欢给vector模板reserve提前分配空间，但是有部分是可以被计算出来的，可以提前reserve分配好合适的空间。但是算不好会有反效果，默认下vector自动扩增的大小是当前大小的两倍。</p>
+</li>
+<li>
+<p>更好看的加速比<br>
+经过我们的多次测试，核心数越少，加速比越高（通讯的开销大了），这个代码在单机48核心的加速比约为1.68。</p>
+</li>
+<li>
+<p>手动展开<br>
+我们把自己修改的部分，手动展开了一部分循环。从汇编上对比手动展开的和没有手动展开的，手动展开的代码会更长，但是性能会有1-2%的提升（可以认为是误差了），求大佬解释，我们自己也没有一个很清晰的定论。</p>
+</li>
+</ol>
+<h1 id="自我总结">自我总结</h1>
+<p>如果没有改错的输入输出的话，我对我自己的修改是满意的。其他再厉害的方法，已经超出了我的能力范围，是还有待学习的领域。同时，这也是我们团队五个人齐心协力的结果，自问已经做到了最好，但是我们一致相信肯定还有更好的方法存在，也还希望大佬点评斧正。</p>
+<h1 id="或许可以优化的点">或许可以优化的点？</h1>
+<ol>
+<li>PetSc矩阵类型</li>
+<li>PetSc矩阵搜印</li>
+<li>为什么OpenCAEPoro中要组装两次矩阵？（不确定是否真实的点）</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[晶体培养手册]]></title>
         <id>https://sethome2.github.io/post/jing-ti-pei-yang-shou-ce/</id>
@@ -1278,51 +1565,6 @@ OI赛制可用技巧，部分比赛也行。但是现在开始鸡贼了一个测
 不过书中提到了很多方式去解决拥塞问题，但已经比较落后了，包括间隔超时加倍，拥塞探测的方法等等，里面还提到了一些公式去计算这些参数。</p>
 <p>大概就写这么多吧，还有很多上层协议，比如说DNS，Web，HTTP之类的可以讲，但是我没那么厉害（<br>
 不过令我惊讶的是，图论算法在计算机网络里也有广泛应用，它会在网络世界里寻找最短路径（一般不是物理距离上的，而且拥塞情况和时延）来到的目的地服务器，数据中心的路由器也需要这种方法来提高性能。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[北京之行——天安门升旗]]></title>
-        <id>https://sethome2.github.io/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/</id>
-        <link href="https://sethome2.github.io/post/bei-jing-zhi-xing-tian-an-men-sheng-qi/">
-        </link>
-        <updated>2021-09-11T04:48:12.000Z</updated>
-        <content type="html"><![CDATA[<p>不知道写点啥，干啥都菜。只能随便乱写。其实这个是本年5月份去了，图片都放在桌面上<strong>好久了</strong>，就写写吧。<br>
-找机会一定写写技术相关，现在MarkDown还用不利索哈哈哈，对着文档在用。</p>
-<hr>
-<p><strong>天安门升旗</strong><br>
-“天安门广场是我国……是向外国朋友展示我国风貌……疫情防控期间，请佩戴口罩……“<br>
-那天在天安门广场上，不停播放这段话语。我第一次在共和国的首都，听到了60年代的广播音。这个声音在21世纪居然显得那么亲切，感觉和电视剧的一模一样。</p>
-<p>伴随着太阳升起，五星红旗飘扬在华夏大地的苍穹。<br>
-<img src="https://sethome2.github.io/post-images/1631336790432.jpg" alt="在拍摄天安门升旗的人们" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635821643351.jpg" alt="人们在用手机拍下升国旗的一瞬间" loading="lazy"></p>
-<hr>
-<p><strong>苏州街</strong><br>
-感觉和苏州的不是很像呀，特别是阳光~维度不同。<br>
-现在都是重建的了。<br>
-<img src="https://sethome2.github.io/post-images/1631687374165.jpg" alt="苏州街道" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1631687389999.jpg" alt="苏州桥" loading="lazy"></p>
-<hr>
-<p><strong>天坛</strong><br>
-晚上的天坛，还不错吧~<br>
-可惜没那种诗意捏，随手一拍。当时天色漆黑了，人眼都看不清楚，能拍成这样也挺不错的。<br>
-<img src="https://sethome2.github.io/post-images/1635821210024.jpg" alt="北京天坛" loading="lazy"></p>
-<hr>
-<p><strong>石狮 / 铜狮</strong><br>
-<img src="https://sethome2.github.io/post-images/1635821916090.jpg" alt="石狮" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635821922334.jpg" alt="石狮" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635821930819.jpg" alt="石狮" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635821940226.jpg" alt="石狮" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635821999356.jpg" alt="铜狮" loading="lazy"><br>
-不说啥了，有点单调重复，没啥特色了。</p>
-<hr>
-<p>忘记了这个叫什么公园，所以说没有标题。<br>
-一般般吧，只是矮个子里拔将军，凑个数<br>
-<img src="https://sethome2.github.io/post-images/1635822067942.jpg" alt="" loading="lazy"></p>
-<hr>
-<p><strong>天坛</strong><br>
-拿这张游客进入北京天坛里面参观祈年殿做收尾吧。<br>
-<img src="https://sethome2.github.io/post-images/1635822315257.jpg" alt="游客进入北京天坛" loading="lazy"></p>
-<p>更新完啦，按理来说这个应该是在8月之前搞定的，硬生生拖到现在。当时去北京是五月一日劳动节，现在回想起来，有些事情都已经记不清了。但是有些事情还是历历在目，哪独特的景观和人文气息独有在北京才能享受到。</p>
 ]]></content>
     </entry>
 </feed>
