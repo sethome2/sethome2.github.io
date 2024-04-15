@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗 个人博客</title>
-    <updated>2024-04-15T11:03:11.237Z</updated>
+    <updated>2024-04-15T11:16:09.705Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -168,7 +168,7 @@ void mydgemm_cpu_v4(int M, int N, int K, ALPHA alpha, double *A, int LDA, double
 
 </code></pre>
 <h1 id="查找左右邻接组分的优化">查找左右邻接组分的优化</h1>
-<p>哎呀，接下来其实Vtune Profile就很难给出什么有用的信息了，好在程序代码不多，我们可以从最花费时间的地方优化起。Partion部分，我们一眼人肉顶针出了OpenCAEPoro作者奇怪的地方，不同组分直接的连接（可能是，OpenCAEPoro作者 董理大佬看到了还请解惑）是通过***遍历数组***实现的。这就导致查找左右孩子（不同组分的连接），在2x2x2的组分中，就有可能有24个链接，获得连接信息就要跑24次。有没有可能用哈希表啊？来自O(1)时间算法的自信。<br>
+<p>哎呀，接下来其实Vtune Profile就很难给出什么有用的信息了，好在程序代码不多，我们可以从最花费时间的地方优化起。Partion部分，我们一眼人肉顶针出了OpenCAEPoro作者奇怪的地方，不同组分直接的连接（可能是，OpenCAEPoro作者张晨松老师看到了还请解惑）是通过***遍历数组***实现的。这就导致查找左右孩子（不同组分的连接），在2x2x2的组分中，就有可能有24个链接，获得连接信息就要跑24次。有没有可能用哈希表啊？来自O(1)时间算法的自信。<br>
 然后，我们两位负责这个赛题的人，对着源代码肉眼检查了两周，终于发现可以简易优化的地方，位于Partition.cpp文件中的SetDistribution函数，以下仅为代码摘要，能这样修改的一共有两处，在这个部分，性能提高了7倍。</p>
 <pre><code class="language-cpp">/// Get elements and their neighbors belonging to current process,
 	/// Also, process of them are needed.
@@ -178,7 +178,7 @@ void mydgemm_cpu_v4(int M, int N, int K, ALPHA alpha, double *A, int LDA, double
 	vector&lt;vector&lt;idx_t&gt;&gt;&amp; recv_buffer = elementCSR;
 	recv_buffer.push_back(vector&lt;idx_t&gt; {myrank, 0, 0});
 
-	//cdr
+	// euphoria
 	unordered_map&lt;idx_t, idx_t&gt; ump_send_buffer;
 
 	// Calculate necessary memory first
@@ -188,7 +188,7 @@ void mydgemm_cpu_v4(int M, int N, int K, ALPHA alpha, double *A, int LDA, double
 			recv_buffer[0][2] += (xadj[i + 1] - xadj[i]);
 		}
 		else {
-			//cdr
+			// euphoria
 			if(ump_send_buffer[part[i]]){
 				idx_t k = ump_send_buffer[part[i]] - 1;
 				send_buffer[k][1] ++;
