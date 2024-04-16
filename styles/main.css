@@ -765,13 +765,16 @@ a {
         flex-wrap: wrap !important;
         justify-content: space-around !important;
         align-items: stretch !important;
+        background-color: whitesmoke !important;
     }
 
     .pic {
         border-radius: 50% !important;
         border: 1px solid #dee2e6 !important;
         display: block !important;
+        height: 100px !important;
         width: 100px !important;
+        margin: 1px !important;
     }
 
     .people {
@@ -781,14 +784,20 @@ a {
         align-items: center !important;
         justify-content: space-around !important;
 
-        flex-grow: 1 !important;
+        flex: 0 0 50% !important;
 
-        margin: 3px !important;
+        margin: 30px !important;
         background-color: whitesmoke !important;
+       
     }
-
+    .people > div {
+        flex: 0 0 50%;
+    }
     .people-text {
-        width: 100% !important;
+        color: #000000 !important;
+    } 
+    .people-name {
+        color: #000000 !important;
     }
 </style>
     
