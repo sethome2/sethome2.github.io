@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" >
 
-<title>ASC24 OpenCAEPoro 齐鲁工业大学优化方案 | sethome的橱窗 个人博客</title>
+<title>ASC24 OpenCAEPoro Problem Solve Plan (Qilu University of Technology) | sethome的橱窗 个人博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -68,8 +68,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-    <meta name="description" content="本文写于ASC24结束后一天，可能存在诸多错误，能力有限。同时这是我第一次接触MPI程序和HPC，还请谅解，之前学习的领域有重合但不多，非常欢迎大家指出错误斧正。
-OpenCAEPoro的背景我想不需要赘述。开门见山的说，大家都发现了dge..." />
+    <meta name="description" content="This is a translated essay from the original Chinese text in this blog.
+The essay was finished one day after the end of ..." />
     <meta name="keywords" content="" />
 </head>
 
@@ -174,14 +174,16 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
             <h2 class="post-title">
-              ASC24 OpenCAEPoro 齐鲁工业大学优化方案
+              ASC24 OpenCAEPoro Problem Solve Plan (Qilu University of Technology)
             </h2>
             <div class="post-date">
-              2024-04-14
+              2024-06-02
             </div>
             
                 <div class="post-content" v-pre>
-                  <p>本文写于ASC24结束后一天，可能存在诸多错误，能力有限。同时这是我第一次接触MPI程序和HPC，还请谅解，之前学习的领域有重合但不多，非常欢迎大家指出错误斧正。</p>
+                  <p>This is a translated essay from the original Chinese text in this blog.</p>
+<p>The essay was finished one day after the end of ASC24, potentially exist with some inaccuracies due to my limited ablility. And this is the first time I try to write MPI program and HPC application. Should there be any inaccuracies, your understanding is greatly appreciated. While my previous areas of study may intersect only minimally with this realm, I warmly welcome any corrections and enhancements from all.</p>
+<p>The background of OpenCAEPoro, I believe, requires no explain again. To cut to the chase, it has become apparent to all that the dgemm function stands out as a focal point. Enhancing this function could achieve notably effects, thereby constituting our primary optimization target.</p>
 <p>OpenCAEPoro的背景我想不需要赘述。开门见山的说，大家都发现了dgemm函数是一个热点，如果优化了这个函数，加速效果会非常明显，这也是我们所优化的地方。同时CAE对左右邻居查找的算法非常极其特别低下，基本上都是O(N)或O(N^2)的时间复杂度，这也是我们所优化的重点之一。最后PetSc有非常多可以优化调节的点，通过优化内存访问，decoup函数优化，我们可以达到更快的速度。同时合理利用异步计算，可以使程序同时榨干CPU运算性能和远端访问性能。</p>
 <p>接下来，我给出我们在决赛中的成绩作为参考，后续我会将初赛提交的文件上传到Github：<br>
 <img src="https://sethome2.github.io/post-images/1713172673923.JPG" alt="OpenCAEPoro成绩单" loading="lazy"><br>
@@ -457,18 +459,15 @@ std::cout.tie(0);
 <li>PetSc矩阵搜印</li>
 <li>为什么OpenCAEPoro中要组装两次矩阵？（不确定是否真实的点）</li>
 </ol>
-<blockquote>
-<p>Hi，此外我有幸作为打杂&amp;后勤队员，能参加这个比赛倍感荣幸，我还在寻找RA，PhD或者其他工作机会，希望聚焦于控制，航空航天，机器人学，如果您愿意向我伸出橄榄枝，我感激不尽。</p>
-</blockquote>
 
                 </div>
                 
                     
                       <div class="next-post">
                         <div class="next">下一篇</div>
-                        <a href="https://sethome2.github.io/post/jing-ti-pei-yang-shou-ce/">
+                        <a href="https://sethome2.github.io/post/asc24-opencaeporo-ge-ren-andtuan-dui-you-hua-fang-an/">
                           <h3 class="post-title">
-                            晶体培养手册
+                            ASC24 OpenCAEPoro 齐鲁工业大学优化方案
                           </h3>
                         </a>
                       </div>
