@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1717515806493">
+<link rel="shortcut icon" href="https://sethome2.github.io/favicon.ico?v=1717564222720">
 <link rel="stylesheet" href="https://sethome2.github.io/styles/main.css">
 
 
@@ -85,7 +85,7 @@ OpenCAEPoro的背景我想不需要赘述。开门见山的说，大家都发现
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sethome2.github.io">
-        <img src="https://sethome2.github.io/images/avatar.png?v=1717515806493" class="site-logo">
+        <img src="https://sethome2.github.io/images/avatar.png?v=1717564222720" class="site-logo">
         <h1 class="site-title">sethome的橱窗 个人博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -182,14 +182,14 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
             
                 <div class="post-content" v-pre>
                   <p>本文写于ASC24结束后一天，可能存在诸多错误，能力有限。同时这是我第一次接触MPI程序和HPC，还请谅解，之前学习的领域有重合但不多，非常欢迎大家指出错误斧正。</p>
-<p>OpenCAEPoro的背景我想不需要赘述。开门见山的说，大家都发现了dgemm函数是一个热点，如果优化了这个函数，加速效果会非常明显，这也是我们所优化的地方。同时CAE对左右邻居查找的算法非常极其特别低下，基本上都是O(N)或O(N^2)的时间复杂度，这也是我们所优化的重点之一。最后PetSc有非常多可以优化调节的点，通过优化内存访问，decoup函数优化，我们可以达到更快的速度。同时合理利用异步计算，可以使程序同时榨干CPU运算性能和远端访问性能。</p>
-<p>接下来，我给出我们在决赛中的成绩作为参考，后续我会将初赛提交的文件上传到Github：<br>
+<p>OpenCAEPoro的背景我想不需要赘述。开门见山的说，大家都发现了dgemm函数是一个热点，如果优化了这个函数，加速效果会非常明显，这也是我们所优化的地方。此外，CAE对左右邻居查找的算法时间复杂度特别高，基本上都是O(N)或O(N^2)的时间复杂度，这也是我们所优化的重点之一。最后PETSc有非常多可以优化调节的点，通过优化内存访问，decoup函数优化，我们可以达到更快的速度。同时合理利用异步计算，可以使程序同时榨干CPU运算性能和远端访问性能。</p>
+<p>接下来，我们给出我们在决赛中的成绩作为参考，后续我会将初赛提交的文件上传到Github：<br>
 <img src="https://sethome2.github.io/post-images/1713172673923.JPG" alt="OpenCAEPoro成绩单" loading="lazy"><br>
 以下是初赛的加速比：<br>
 <img src="https://sethome2.github.io/post-images/1713174821342.png" alt="初赛加速比" loading="lazy"></p>
 <hr>
 <h1 id="dgemm算法">dgemm算法</h1>
-<p>首先是dgemm算法，ASC非官方交流群有大佬给出了应该是更优解，是Intel黑科技，我不敢说我的代码更快，直达连接：<a href="https://www.intel.com/content/www/us/en/developer/articles/technical/onemkl-improved-small-matrix-performance-using-just-in-time-jit-code.html">https://www.intel.com/content/www/us/en/developer/articles/technical/onemkl-improved-small-matrix-performance-using-just-in-time-jit-code.html</a>。相比之下我们的利用block缓存和cpp temple编译期间计算的方法就显得有些无力。这里可能会有人好奇，为什么不使用MKL的dgemm算法呢？经过我们的测试，发现MKL在对小矩阵中性能不佳，CAE中testcase1所计算的矩阵是相当小的，20x20以内（比赛中的case不得而知）。同时，我还给出我们参考的代码，是来自于英伟达工程师的小教程，简直就是HPC入门最好的指南：<a href="https://github.com/yzhaiustc/Optimizing-DGEMM-on-Intel-CPUs-with-AVX512F">https://github.com/yzhaiustc/Optimizing-DGEMM-on-Intel-CPUs-with-AVX512F</a><br>
+<p>首先是dgemm算法，ASC非官方交流群有大佬给出了应该是更优解，是Intel黑科技，我们不敢说我的代码更快，直达连接：<a href="https://www.intel.com/content/www/us/en/developer/articles/technical/onemkl-improved-small-matrix-performance-using-just-in-time-jit-code.html">https://www.intel.com/content/www/us/en/developer/articles/technical/onemkl-improved-small-matrix-performance-using-just-in-time-jit-code.html</a>。相比之下我们的利用block缓存和cpp temple编译期间计算的方法就显得有些无力。这里可能会有人好奇，为什么不使用MKL的dgemm算法呢？经过我们的测试，发现MKL在对小矩阵中性能不佳，CAE中testcase1所计算的矩阵是相当小的，20x20以内（比赛中的case不得而知）。同时，我们还给出我们参考的代码，是来自于英伟达工程师的小教程，简直就是HPC入门最好的指南：<a href="https://github.com/yzhaiustc/Optimizing-DGEMM-on-Intel-CPUs-with-AVX512F">https://github.com/yzhaiustc/Optimizing-DGEMM-on-Intel-CPUs-with-AVX512F</a><br>
 在我们的这份代码，小矩阵乘法相比作者的原版，能提供约30%的性能提升（因为部分缩放操作不会被编译）。</p>
 <pre><code class="language-cpp">#define A(i, j) A[(i) * LDA + (j)]
 #define B(i, j) B[(i) * LDB + (j)]
@@ -330,7 +330,7 @@ void mydgemm_cpu_v4(int M, int N, int K, ALPHA alpha, double *A, int LDA, double
 
 </code></pre>
 <h1 id="查找左右邻接组分的优化">查找左右邻接组分的优化</h1>
-<p>哎呀，接下来其实Vtune Profile就很难给出什么有用的信息了，好在程序代码不多，我们可以从最花费时间的地方优化起。Partion部分，我们一眼人肉顶针出了OpenCAEPoro作者奇怪的地方，不同组分直接的连接（可能是，OpenCAEPoro作者张晨松老师看到了还请解惑）是通过***遍历数组***实现的。这就导致查找左右孩子（不同组分的连接），在2x2x2的组分中，就有可能有24个链接，获得连接信息就要跑24次。有没有可能用哈希表啊？来自O(1)时间算法的自信。<br>
+<p>哎呀，接下来其实Vtune Profile就很难给出什么有用的信息了，好在程序代码不多，我们可以从最花费时间的地方优化起。Partion部分，我们人肉顶针出了OpenCAEPoro奇怪的地方，不同组分直接的连接是通过***遍历数组***实现的。这就导致查找左右孩子（不同组分的连接），在2x2x2的组分中，就有可能有24个链接，获得连接信息就要跑24次。有没有可能用哈希表啊？来自O(1)时间算法的自信。<br>
 然后，我们两位负责这个赛题的人，对着源代码肉眼检查了两周，终于发现可以简易优化的地方，位于Partition.cpp文件中的SetDistribution函数，以下仅为代码摘要，能这样修改的一共有两处，在这个部分，性能提高了7倍。</p>
 <pre><code class="language-cpp">/// Get elements and their neighbors belonging to current process,
 	/// Also, process of them are needed.
@@ -377,8 +377,8 @@ void mydgemm_cpu_v4(int M, int N, int K, ALPHA alpha, double *A, int LDA, double
 		}
 	}
 </code></pre>
-<h1 id="在petsc-linersovler的优化">在PetSc LinerSovler的优化</h1>
-<p>重写decoup函数是我们首先应用的优化，这是其中的一个子函数，先把重复释放的内存操作给修改了，改为静态内存，避免反复申请释放对内存池的压力，同时申请对其的内存，提高访问效率。</p>
+<h1 id="petsc-linersovler的优化">PETSc LinerSovler的优化</h1>
+<p>重写decoup函数是我们首先应用的优化，这是其中的一个子函数，先把重复释放的内存操作给修改了，改为静态内存，避免反复申请释放对内存池的压力，同时申请对齐的内存，提高访问效率。</p>
 <pre><code class="language-cpp">void inverse1(double *A, int N)
 {
     static int *IPIV = static_cast&lt;int *&gt;(aligned_alloc(64, N * sizeof(int)));
@@ -412,13 +412,13 @@ void mydgemm_cpu_v4(int M, int N, int K, ALPHA alpha, double *A, int LDA, double
     dgetri_(&amp;N, A, &amp;N, IPIV, WORK, &amp;LWORK, &amp;INFO);
 }
 </code></pre>
-<p>然后，我们想到同样的操作也也可以用在整个LS求解函数中，从微小的args，到相对较大的nNDCount等变量开始改起，这些操作约可以带来了10%的Object Time提升。在查阅文档的时候，还意外发现PetSc自己实现了一个内存池的操作，这个又可以带来10%的性能提升。<br>
-<img src="https://sethome2.github.io/post-images/1713175347615.png" alt="PetSc内存操作" loading="lazy"></p>
-<p>在查阅PetSc文档后，确定了Mat, Vector, Ksp等PetSc变量可以被重复利用的前提下，我们将其改变为静态类型变量，企图得到进一步的性能提升，但是可惜的是并没有观察到有效的变化，估计是编译器做了一些神奇的优化掩盖掉了。</p>
-<p>在求解函数中，还可以发现存在<code>MatAssemblyBegin</code>和<code>MatAssemblyBegin</code>的函数，这些字眼有效暗示了我们这个是异步操作函数，查阅PetSc文档后得到了肯定。我们在其中塞入了一些计算过程，但是Object Time也没有肉眼可以观察到的变化，或许case太小了没法体现出来。同样，我们复用了这一思想，在结果拷贝的过程中使用C++ 20 feature特性，异步拷贝了数据（但这不在Object time内，只是为了比赛求解更快）。</p>
+<p>然后，我们想到同样的操作也也可以用在整个LS求解函数中，从微小的args，到相对较大的nNDCount等变量开始改起，这些操作约可以带来了10%的Object Time提升。在查阅文档的时候，还意外发现PETSc自己实现了一个内存池的操作，这个又可以带来10%的性能提升。<br>
+<img src="https://sethome2.github.io/post-images/1713175347615.png" alt="PETSc内存操作" loading="lazy"></p>
+<p>在查阅PETSc文档后，确定了Mat, Vector, Ksp等PETSc变量可以被重复利用的前提下，我们将其改变为静态类型变量，企图得到进一步的性能提升，但是可惜的是并没有观察到有效的变化，估计是编译器做了一些神奇的优化掩盖掉了。</p>
+<p>在求解函数中，还可以发现存在<code>MatAssemblyBegin</code>和<code>MatAssemblyBegin</code>的函数，这些字眼有效暗示了我们这个是异步操作函数，查阅PETSc文档后得到了肯定。我们在其中塞入了一些计算过程，但是Object Time也没有肉眼可以观察到的变化，或许case太小了没法体现出来。同样，我们复用了这一思想，在结果拷贝的过程中使用C++ 20 feature特性，异步拷贝了数据（但这不在Object time内，只是为了比赛求解更快）。</p>
 <p>接下来我要介绍一些我们失败的优化，尝试过更改矩阵搜引，矩阵类型，修改预求解器的方法，加速LS求解过程，亦或者使用Cuda加速线性求解过程（即使它并不在Object Time其中，但是在比赛时可以有效减少题目运行时间），都因为没有明显的性能提升或者求解错误而作罢。在这里面，我们花费了超过一半以上的备赛时间，却很遗憾没有收获。</p>
 <h1 id="修改汇总时的文件读写io">修改汇总时的文件读写IO</h1>
-<p><strong>重点：我这个实现的代码有Bug，思路没问题，但是最后主线程输出改炸了，会导致SUMMAY.out文件输出到虚空里面。这个修改是我自己完成的，在比赛时才发现，我本人难逃其咎，已经向队友祈求原谅了，很遗憾因为这个错误，导致几乎所有的case在决赛时都跑了两次，在此处公开道歉了QAQ。我战犯我该死○|￣|_</strong></p>
+<p><strong>重点：我这个实现的代码有Bug，思路没问题，但是最后主线程输出改炸了，会导致SUMMAY.out文件输出到虚空里面。这个修改是我自己完成的，在比赛时才发现，我本人难逃其咎，已经向队友祈求原谅了，很遗憾因为这个错误，导致几乎所有的case在决赛时都跑了两次，在此处公开道歉了QAQ。</strong></p>
 <p>在OpenCAEPoro中，汇总结果阶段会向磁盘中写入<code>SUMMAY_proc_xxx</code>和<code>Fast_proc_xxx</code>文件，再由主线程读取，整理出最终的数据，这样会导致可拓展性不高，对于上百核的并行，可能会造成性能损失，在研读代码后，我决定修改这一部分，不写入磁盘而通过MPI通讯汇总数据，最终得到10%的性能提升（线程越多性能提升越高，上千线程估计能跑到几百倍？）。</p>
 <p>原来的过程像是这样：<br>
 <img src="https://sethome2.github.io/post-images/1713177578180.png" alt="原版汇总方法" loading="lazy"></p>
@@ -437,7 +437,7 @@ std::cout.tie(0);
 </code></pre>
 <ol start="2">
 <li>
-<p>给reserve提前分配空间<br>
+<p>给vector提前分配空间<br>
 代码中，不喜欢给vector模板reserve提前分配空间，但是有部分是可以被计算出来的，可以提前reserve分配好合适的空间。但是算不好会有反效果，默认下vector自动扩增的大小是当前大小的两倍。</p>
 </li>
 <li>
@@ -454,8 +454,8 @@ std::cout.tie(0);
 <h1 id="或许可以优化的点">或许可以优化的点？</h1>
 <ol>
 <li>PetSc矩阵类型</li>
-<li>PetSc矩阵搜印</li>
-<li>为什么OpenCAEPoro中要组装两次矩阵？（不确定是否真实的点）</li>
+<li>PetSc矩阵搜引</li>
+<li>为什么OpenCAEPoro中要组装两次矩阵？（不确定是否正确的点）</li>
 </ol>
 <blockquote>
 <p>Hi，此外我有幸作为打杂&amp;后勤队员，能参加这个比赛倍感荣幸，我还在寻找RA，PhD或者其他工作机会，希望聚焦于控制，航空航天，机器人学，如果您愿意向我伸出橄榄枝，我感激不尽。</p>
