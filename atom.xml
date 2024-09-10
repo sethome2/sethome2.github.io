@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗 个人博客</title>
-    <updated>2024-07-24T19:11:49.632Z</updated>
+    <updated>2024-09-10T12:06:57.376Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://sethome2.github.io/images/avatar.png</logo>
     <icon>https://sethome2.github.io/favicon.ico</icon>
     <rights>All rights reserved 2024, sethome的橱窗 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[齐鲁工业大学Adam战队2024年RM AWAR青工会分享]]></title>
+        <id>https://sethome2.github.io/post/qi-lu-gong-ye-da-xue-adam-zhan-dui-2024-nian-rm-awar-qing-gong-hui-fen-xiang/</id>
+        <link href="https://sethome2.github.io/post/qi-lu-gong-ye-da-xue-adam-zhan-dui-2024-nian-rm-awar-qing-gong-hui-fen-xiang/">
+        </link>
+        <updated>2024-09-10T12:04:31.000Z</updated>
+        <content type="html"><![CDATA[<p>如下是所使用的PPT，后续文件（包括Simlink文件后续也会在这发布）<br>
+<a href="https://blog.sethome.cc/Ver1.1%E6%9D%8E%E6%9D%B0%E7%9B%B8-12%E5%8F%B7%E9%9D%92%E5%B7%A5%E4%BC%9A-%E5%B5%8C%E5%85%A5%E5%BC%8F.pptx">PPT下载链接</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ASC24 OpenCAEPoro Problem Solve Plan (Qilu University of Technology)]]></title>
         <id>https://sethome2.github.io/post/asc24-opencaeporo-problem-solve-plan-qilu-university-of-technology/</id>
@@ -1759,21 +1769,6 @@ OI赛制可用技巧，部分比赛也行。但是现在开始鸡贼了一个测
 <p>济南机场的半夜。啊，其实这个很一般，但是为了凑数，强行挤出来的。<br>
 <img src="https://sethome2.github.io/post-images/1647606247450.jpg" alt="济南机场的半夜" loading="lazy"></p>
 <p>（高情商）还有很大进步空间</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Panda合集]]></title>
-        <id>https://sethome2.github.io/post/panda-he-ji/</id>
-        <link href="https://sethome2.github.io/post/panda-he-ji/">
-        </link>
-        <updated>2021-10-31T17:34:42.000Z</updated>
-        <content type="html"><![CDATA[<p>从北京之行单独放出来的~</p>
-<p><img src="https://sethome2.github.io/post-images/1635701715798.jpg" alt="熊猫" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635701718678.jpg" alt="熊猫" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635701721691.jpg" alt="熊猫" loading="lazy"><br>
-<img src="https://sethome2.github.io/post-images/1635701723952.jpg" alt="熊猫" loading="lazy"></p>
-<p>拍的不是很好hhh，第一次拍这种东西<br>
-555</p>
 ]]></content>
     </entry>
 </feed>
