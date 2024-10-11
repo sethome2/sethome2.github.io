@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sethome2.github.io</id>
     <title>sethome的橱窗 个人博客</title>
-    <updated>2024-09-10T12:06:57.376Z</updated>
+    <updated>2024-10-11T15:39:51.357Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sethome2.github.io"/>
     <link rel="self" href="https://sethome2.github.io/atom.xml"/>
@@ -17,7 +17,8 @@
         </link>
         <updated>2024-09-10T12:04:31.000Z</updated>
         <content type="html"><![CDATA[<p>如下是所使用的PPT，后续文件（包括Simlink文件后续也会在这发布）<br>
-<a href="https://blog.sethome.cc/Ver1.1%E6%9D%8E%E6%9D%B0%E7%9B%B8-12%E5%8F%B7%E9%9D%92%E5%B7%A5%E4%BC%9A-%E5%B5%8C%E5%85%A5%E5%BC%8F.pptx">PPT下载链接</a></p>
+<a href="https://blog.sethome.cc/Ver1.1%E6%9D%8E%E6%9D%B0%E7%9B%B8-12%E5%8F%B7%E9%9D%92%E5%B7%A5%E4%BC%9A-%E5%B5%8C%E5%85%A5%E5%BC%8F.pptx">PPT下载链接</a><br>
+<a href="https://blog.sethome.cc/rmwarwd.slx">Matlab文件</a></p>
 ]]></content>
     </entry>
     <entry>
